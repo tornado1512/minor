@@ -31,4 +31,16 @@
 	<url-pattern>/login<pre></pre>.do</url-pattern>
   </servlet-mapping>
 
+
+  <servlet>
+  <servlet-name>app003</servlet-name>
+  <servlet-class>controllers.RestaurantServlet<servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+  <servlet-name>app003<servlet-name>
+  <url-pattern>/Restaurant.do</url-pattern>
+  </servlet-mapping>
+
+
 </web-app>
