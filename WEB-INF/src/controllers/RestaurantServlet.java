@@ -5,7 +5,7 @@ import javax.servlet.*;
 import java.io.*;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
-///import models.User;
+import models.Restreg;
 
 public class RegisterServlet extends HttpServlet{
 	public void doGet(HttpServletRequest request,HttpServletResponse response) throws IOException,ServletException{
@@ -37,7 +37,7 @@ public class RegisterServlet extends HttpServlet{
 			flag = false;
 			errorMessage = errorMessage + "contact no. must be at 10 numeric<br/>";
 		}
-		/*User user=new User(restname ,restaddress,restcontact);
+		Restreg restreg=new Restreg(restname ,restaddress,restcontact);
 		if(flag){
 			if(user.saveRecord()){
 				nextPage="home.jsp";
@@ -45,7 +45,7 @@ public class RegisterServlet extends HttpServlet{
 		}else{
 			request.setAttribute("err_msg",errorMessage);
 		}
-*/
+
 		System.out.println(flag+" ~~~~~~ "+nextPage);
 
 		request.getRequestDispatcher(nextPage).forward(request,response);
