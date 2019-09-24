@@ -78,13 +78,13 @@ email varchar(50) not null unique,
 password varchar(100) not null
 );
 
-insert city(city_name) value ('Jabalpur'),('Bhopal'),('Indore');
+insert into cities(city_name) values ('Jabalpur'),('Bhopal'),('Indore');
 select * from cities;
 
-insert into categories(categ_name) value ('Chinese'),('South Indian'),('Italian'),('North Indian');
+insert into categories(categ_name) values ('Chinese'),('South Indian'),('Italian'),('North Indian');
 select * from categories;
 
-insert food (food_name,categ_id) value ('Hakka Noodles',1),('Veg Manchuria',1),('Spring rolls',1),
+insert food (food_name,categ_id) values ('Hakka Noodles',1),('Veg Manchuria',1),('Spring rolls',1),
 ('Szechwan Chilli Paneer',1), ('Honey Chilli Potato',1) , ('Momos',1),('Vegetable Fried Rice',1),
 ('Vegetable Manchow Soup',1), ('Veg Crispy',1) , ('Dim Sums',1);
 select * from food;
