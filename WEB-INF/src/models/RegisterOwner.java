@@ -2,9 +2,20 @@ package models;
 
 public class RegisterOwner{
 	private Integer ownerId;
-	private String ownerName;
+	private String ownername;
 	private String email;
 	private String password;
+
+	public RegisterOwner(){
+	
+	}	
+	public RegisterOwner(String username,String email,String password){
+		this.username=username;
+		this.email=email;
+		this.password=password;
+	}
+
+
 
 	public void setOwnerId(Integer ownerId){
 			this.ownerId=ownerId;
@@ -13,11 +24,11 @@ public class RegisterOwner{
 			return ownerId;
 	}
 
-	public void setOwnerName(String ownerName){
-			this.ownerName=ownerName;
+	public void setOwnername(String ownername){
+			this.ownername=ownername;
 	}
-	public String getOwnerName(){
-			return ownerName;
+	public String getOwnername(){
+			return ownername;
 	}
 
 	public void setEmail(String email){
@@ -32,5 +43,57 @@ public class RegisterOwner{
 	}
 	public String getPassword(){
 			return password;
+	}
+
+
+	/// Register function
+	public boolean saveRecord(){
+		boolean flag=false;
+		try{
+
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/minor?user=root&password=1234");
+			String query="insert into user (owner_name,email,password) value(?,?,?)";
+			PreparedStatement pst=con.prepareStatement(query);
+			StrongPasswordEncryptor spe=new StrongPasswordEncryptor();
+			String spass=spe.encryptPassword(password);
+			pst.setString(1,ownername); 
+			pst.setString(2,email); 
+			pst.setString(3,spass); 
+			int i=pst.executeUpdate();
+			if(i==1){
+				flag=true;
+			}
+			con.close();
+		}
+		catch (ClassNotFoundException|SQLException e){
+			e.printStackTrace();
+		}
+		return flag;
+	} 
+
+
+	///Login function
+	public boolean checkLogin(){
+		boolean flag=false;
+		try{
+
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/minor?user=root&password=1234");
+			String query="select password from owner where email=?";
+			PreparedStatement pst=con.prepareStatement(query);
+			pst.setString(1,email);
+			ResultSet rst=pst.executeQuery();
+			StrongPasswordEncryptor spe=new StrongPasswordEncryptor();
+			if(rst.next()){
+				flag=spe.checkPassword(password,rst.getString(1));
+				
+			}
+			con.close();
+		}
+		catch (ClassNotFoundException|SQLException e){
+			e.printStackTrace();
+		}
+		return flag;
 	}
 }
