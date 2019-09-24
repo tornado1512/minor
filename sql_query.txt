@@ -31,7 +31,7 @@ rest_contact int(15)  not null unique,
 owner_id int not null,
 city_id int not null,
 constraint fk_owner_rest foreign key (owner_id) references owner (owner_id),
-constraint fk_city_rest foreign key (city_id) references city (city_id)
+constraint fk_cities_rest foreign key (city_id) references cities (city_id)
 );
 
 create table rest_pics
@@ -40,15 +40,16 @@ rest_pic_id int not null auto_increment primary key,
 pic_path varchar(100) not null unique,
 pic_details varchar(1000) not null,
 rest_id int not null,
-constraint fk_rest_rest_pics foreign key (rest_id) references owner (rest_id) 
+constraint fk_rest_rest_pics foreign key (rest_id) references rest (rest_id) 
 );
+
 create table restCategories
 (
 rest_categ_id int not null auto_increment primary key,
 rest_id int not null ,
 categ_id int not null,
-constraint fk_restaurant_restCategories foreign key (rest_id) references restaurant (rest_id),
-constraint fk_category_restCategories foreign key (categ_id) references categories (categ_id)
+constraint fk_rest_restCategories foreign key (rest_id) references rest (rest_id),
+constraint fk_categories_restCategories foreign key (categ_id) references categories (categ_id)
 );
 
 create table food
@@ -64,10 +65,9 @@ create table restfood
 restfood_id int not null auto_increment primary key,
 rest_categ_id int not null,
 food_id int not null,
-food_price int(2000) not null,
-constraint fk_restcategories_restfood foreign key (rest_categ_id) references categories(rest_categ_id),
-constraint fk_food_restfood foreign key (food_id) references categories(food_id)
-
+food_price int(255) not null,
+constraint fk_restcategories_restfood foreign key (rest_categ_id) references restcategories(rest_categ_id),
+constraint fk_food_restfood foreign key (food_id) references food(food_id)
 );
 create table user
 (
