@@ -9,6 +9,14 @@
   <title>Document</title>
  </head>
  <body>
+
+ <% String errMsg = (String)request.getAttribute("error_msg");  %>
+ <% if(errMsg!=null){ %>
+  <div style="color:red">
+	<%= errMsg %>
+  </div>
+   <% } %> 
+
   <form action="login.do" method="post">
 	Email<input type="email" name="email" >
 	Password<input type="password" name="passw" >

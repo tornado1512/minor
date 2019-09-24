@@ -11,7 +11,7 @@ public class Restreg{
 
     }
 	public Restreg(String restname ,String restaddress, String restcontact){
-			this.restname=restname;
+		this.restname=restname;
         this.restaddress=restaddress;
         this.restcontact=restcontact;
     }
@@ -27,8 +27,8 @@ public class Restreg{
 		try{
 
 			Class.forName("com.mysql.jdbc.Driver");
-			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc1?user=root&password=1234");
-			String query="insert into users (rest_name,rest_address,rest_contact) value(?,?,?)";
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/minor?user=root&password=1234");
+			String query="insert into user (rest_name,rest_address,rest_contact) value(?,?,?)";
 			PreparedStatement pst=con.prepareStatement(query);
 			pst.setString(1,restname); 
 			pst.setString(2,restaddress); 

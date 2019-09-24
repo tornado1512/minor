@@ -16,7 +16,7 @@
   </div>
   <% } %> 
   
-  <form action="register.do" id="regform">
+  <form action="register.do" id="regform" method="post">
 	User Name: 
 		<input type="text" name="uname" id="uname" />
 		<span id="unmerr" class="errmsg">Invalid User Name must be at least 3 characters</span><br />

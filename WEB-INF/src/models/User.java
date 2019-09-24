@@ -31,8 +31,8 @@ public class User{
 		try{
 
 			Class.forName("com.mysql.jdbc.Driver");
-			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc1?user=root&password=1234");
-			String query="select password from users where email=?";
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/minor?user=root&password=1234");
+			String query="select password from user where email=?";
 			PreparedStatement pst=con.prepareStatement(query);
 			pst.setString(1,email);
 			ResultSet rst=pst.executeQuery();
@@ -53,8 +53,8 @@ public class User{
 		try{
 
 			Class.forName("com.mysql.jdbc.Driver");
-			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc1?user=root&password=1234");
-			String query="insert into users (username,email,password) value(?,?,?)";
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/minor?user=root&password=1234");
+			String query="insert into user (user_name,email,password) value(?,?,?)";
 			PreparedStatement pst=con.prepareStatement(query);
 			StrongPasswordEncryptor spe=new StrongPasswordEncryptor();
 			String spass=spe.encryptPassword(password);

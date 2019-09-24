@@ -8,7 +8,7 @@ import java.util.regex.Matcher;
 import models.User;
 
 public class RegisterServlet extends HttpServlet{
-	public void doGet(HttpServletRequest request,HttpServletResponse response) throws IOException,ServletException{
+	public void doPost(HttpServletRequest request,HttpServletResponse response) throws IOException,ServletException{
         String nextPage=" ";
 
 		HttpSession session=request.getSession();
