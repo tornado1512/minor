@@ -39,7 +39,7 @@ public class RegisterServlet extends HttpServlet{
 		}
 		Restreg restreg=new Restreg(restname ,restaddress,restcontact);
 		if(flag){
-			if(user.saveRecord()){
+			if(restreg.saveRecord()){
 				nextPage="home.jsp";
 			}
 		}else{
