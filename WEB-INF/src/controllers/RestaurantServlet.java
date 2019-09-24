@@ -6,9 +6,11 @@ import java.io.*;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import models.Restreg;
+import models.User;
 
-public class RegisterServlet extends HttpServlet{
+public class RestaurantServlet extends HttpServlet{
 	public void doGet(HttpServletRequest request,HttpServletResponse response) throws IOException,ServletException{
+		User user = new User();
         String nextPage=" ";
 
 		HttpSession session=request.getSession();
