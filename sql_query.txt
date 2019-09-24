@@ -69,6 +69,7 @@ food_price int(255) not null,
 constraint fk_restcategories_restfood foreign key (rest_categ_id) references restcategories(rest_categ_id),
 constraint fk_food_restfood foreign key (food_id) references food(food_id)
 );
+
 create table user
 (
 user_id int not null auto_increment primary key,
@@ -76,4 +77,17 @@ user_name varchar(50) not null unique,
 email varchar(50) not null unique,
 password varchar(100) not null
 );
+
+insert city(city_name) value ('Jabalpur'),('Bhopal'),('Indore');
+select * from cities;
+
+insert into categories(categ_name) value ('Chinese'),('South Indian'),('Italian'),('North Indian');
+select * from categories;
+
+insert food (food_name,categ_id) value ('Hakka Noodles',1),('Veg Manchuria',1),('Spring rolls',1),
+('Szechwan Chilli Paneer',1), ('Honey Chilli Potato',1) , ('Momos',1),('Vegetable Fried Rice',1),
+('Vegetable Manchow Soup',1), ('Veg Crispy',1) , ('Dim Sums',1);
+select * from food;
+
+
 
