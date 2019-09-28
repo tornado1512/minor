@@ -9,9 +9,10 @@ import models.*;
  public class OwnerLoginServlet extends HttpServlet{
 	public void doPost(HttpServletRequest request,HttpServletResponse response)throws ServletException,IOException{
 	String nextPage="";
+	String oname = request.getParameter("oname");
 	String email=request.getParameter("email");
 	String password=request.getParameter("passw");
-	RegisterOwner owner=new RegisterOwner(email,password);
+	RegisterOwner owner=new RegisterOwner(oname,email,password);
 	if(owner.checkLogin()){
 		nextPage="home.jsp";
 	}

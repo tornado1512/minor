@@ -3,7 +3,7 @@
     <head>
             <meta charset="UTF-8">
             <link rel="stylesheet" type="text/css" href="css/index.css" />
-            <script src="js/index.js"></script>
+            <script src="js/owner_register.js"></script>
         <title>owner Register</title>
     </head>
     <body>
@@ -18,10 +18,10 @@
 
 
 
-        <form action="owner_regsiter.do" id="regform">
+        <form action="owner_regsiter.do" id="regform" method="post">
             Owner name:
             <input type="text" name="oname" id="oname"/>
-            <span id="onmerr" class="errmsg">Invalid User Name must be at least 3 characters</span><br>
+            <span id="unmerr" class="errmsg"> User Name must be at least 3 characters</span><br>
             
             Email: 
 		    <input type="email" name="email" id="email" />
@@ -35,7 +35,7 @@
 		
 	        Retype Password: 
 		    <input type="password" name="repass" id="repass" />
-		    <span id="rperr" class="errmsg">Password and RePassword Must Match</span>
+		    <span id="rperr" class="errmsg">Password and RePassword must Match</span>
 		    <br />
 	      <input type="submit" value="owner_regsiter" />
         </form>

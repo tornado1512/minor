@@ -3,24 +3,49 @@ package controllers;
 import javax.servlet.http.*;
 import javax.servlet.*;
 import java.io.*;
+
+import java.sql.*;
+
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
-import models.Restreg;
-import models.User;
+
+import models.*;
+
+import java.util.List;
+
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
 
 public class RestaurantServlet extends HttpServlet{
 	public void doGet(HttpServletRequest request,HttpServletResponse response) throws IOException,ServletException{
-		User user = new User();
-        String nextPage=" ";
-
+		String nextPage="";
 		HttpSession session=request.getSession();
-		String restname = request.getParameter("resname");
-		String restaddress = request.getParameter("resaddres");
-		String restcontact = request.getParameter("rescont");
 		
+		if(ServletFileUpload.isMultipartContent(request)){
+			DiskFileItemFactory dfif=new DiskFileItemFactory();
+			ServletFileUpload sfu=new ServletFileUpload(dfif);
+			try{
+				List<FileItem> fileItems=sfu.parseRequest(request);
+				String realPath=getServletContext().getRealPath("/");
+				for(FileItem fileItem:fileItems){
+					if(fileItem.isFormField()){
+						if(fileItem.getFieldName().equals("restName")){
+							String restName=fileItem.getFieldName();
+							System.out.println(request.getParameter(restName));
+						}
+					}
+				}
+			}
+			catch(Exception e){
+				e.printStackTrace();
+			}
+
+		}
 
 		boolean flag = true;
-		String errorMessage = "";
+		/*String errorMessage = "";
 
 		if(restname.length()<3){
 			flag = false;
@@ -47,6 +72,7 @@ public class RestaurantServlet extends HttpServlet{
 		}else{
 			request.setAttribute("err_msg",errorMessage);
 		}
+		*/
 
 		System.out.println(flag+" ~~~~~~ "+nextPage);
 

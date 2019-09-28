@@ -10,6 +10,6 @@
  </head>
  <body>
  <h1 style="color:red">HOME PAGE</h1>
-  <h1>Successfully login</h1>
+  <h1>Successfully register/login</h1>
  </body>
 </html>

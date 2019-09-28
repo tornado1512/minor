@@ -1,16 +1,19 @@
 package models;
 
+import java.sql.*;
+import org.jasypt.util.password.StrongPasswordEncryptor;
+
 public class RegisterOwner{
 	private Integer ownerId;
-	private String ownername;
+	private String ownerName;
 	private String email;
 	private String password;
 
 	public RegisterOwner(){
 	
 	}	
-	public RegisterOwner(String username,String email,String password){
-		this.username=username;
+	public RegisterOwner(String ownerName,String email,String password){
+		this.ownerName=ownerName;
 		this.email=email;
 		this.password=password;
 	}
@@ -24,11 +27,11 @@ public class RegisterOwner{
 			return ownerId;
 	}
 
-	public void setOwnername(String ownername){
-			this.ownername=ownername;
+	public void setOwnerName(String ownerName){
+			this. ownerName= ownerName;
 	}
-	public String getOwnername(){
-			return ownername;
+	public String getOwnerName(){
+			return  ownerName;
 	}
 
 	public void setEmail(String email){
@@ -57,7 +60,7 @@ public class RegisterOwner{
 			PreparedStatement pst=con.prepareStatement(query);
 			StrongPasswordEncryptor spe=new StrongPasswordEncryptor();
 			String spass=spe.encryptPassword(password);
-			pst.setString(1,ownername); 
+			pst.setString(1,ownerName); 
 			pst.setString(2,email); 
 			pst.setString(3,spass); 
 			int i=pst.executeUpdate();

@@ -18,7 +18,7 @@
   <a href="login.jsp">login/user</a></br></br>
   <a href="register.jsp">register/user</a></br></br>
   
-  <a href="login.jsp">login/owner</a></br></br>
-  <a href="restaurant.jsp">register/owner</a></br></br>
+  <a href="owner_login.jsp">login/owner</a></br></br>
+  <a href="owner_register.jsp">register/owner</a></br></br>
  </body>
 </html>

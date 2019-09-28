@@ -5,9 +5,9 @@ import javax.servlet.*;
 import java.io.*;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
-import models.User;
+import models.*;
 
-public class RegisterServlet extends HttpServlet{
+public class OwnerRegisterServlet extends HttpServlet{
 	public void doPost(HttpServletRequest request,HttpServletResponse response) throws IOException,ServletException{
         String nextPage=" ";
 
@@ -43,7 +43,7 @@ public class RegisterServlet extends HttpServlet{
 			errorMessage = errorMessage + "Password and Retype Password must match<br />";
 		}
 
-		RegisterOwner owner=new RegisterOwner(username ,email,password);
+		RegisterOwner owner=new RegisterOwner(ownerName ,email,password);
 		if(flag){
 			if(owner.saveRecord()){
 				nextPage="home.jsp";

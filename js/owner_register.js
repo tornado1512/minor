@@ -5,12 +5,12 @@ function initAll(){
 	setAllActions();
 }
 
-var regform,uname,email,passw,repass;
-var unmerr,emerr,perr,rperr;
+var oname,email,passw,repass;
+var regform,unmerr,emerr,perr,rperr;
 function getAllElements(){
 	regform = document.getElementById('regform');
 
-	uname = document.getElementById('uname');
+	oname = document.getElementById('oname');
 	email = document.getElementById('email');
 	passw = document.getElementById('passw');
 	repass = document.getElementById('repass');	
@@ -25,8 +25,8 @@ function setAllActions(){
 	alert("hello");
 	regform.onsubmit = validateForm;
 	
-	uname.onblur = function(){
-						if(uname.value.length<3){
+	oname.onblur = function(){
+						if(oname.value.length<3){
 							flag = false;
 							unmerr.style.visibility = 'visible';
 						}else{
@@ -74,7 +74,7 @@ var flag = true;
 function validateForm(){
 	
 	
-	if(uname.value.length<3){
+	if(oname.value.length<3){
 		unmerr.style.visibility = 'visible';
 		flag =false;
 	}
