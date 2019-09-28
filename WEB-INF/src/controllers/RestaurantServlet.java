@@ -21,6 +21,15 @@ import org.apache.commons.fileupload.FileUploadException;
 public class RestaurantServlet extends HttpServlet{
 	public void doGet(HttpServletRequest request,HttpServletResponse response) throws IOException,ServletException{
 		String nextPage="";
+		String restName="";
+		String restAddress="";
+		String city="";
+		String restCont="";
+		Integer ownerId="";
+		String opTime="";
+		String clTime="";
+
+
 		HttpSession session=request.getSession();
 		
 		if(ServletFileUpload.isMultipartContent(request)){
@@ -29,12 +38,40 @@ public class RestaurantServlet extends HttpServlet{
 			try{
 				List<FileItem> fileItems=sfu.parseRequest(request);
 				String realPath=getServletContext().getRealPath("/");
+				realPath+="images";
 				for(FileItem fileItem:fileItems){
 					if(fileItem.isFormField()){
 						if(fileItem.getFieldName().equals("restName")){
-							String restName=fileItem.getFieldName();
-							System.out.println(request.getParameter(restName));
+							restName=fileItem.getString();
 						}
+						else if(fileItem.getFieldName().equals("city")){
+							city=fileItem.getString();
+						}
+						else if(fileItem.getFieldName().equals("address")){
+							restAddress=fileItem.getString();
+						}
+						else if(fileItem.getFieldName().equals("restContact")){
+							restContact=fileItem.getString();
+						}
+						else if(fileItem.getFieldName().equals("ownerId")){
+							ownerId=Integer.parseInt(fileItem.getString());
+						}
+						else if(fileItem.getFieldName().equals("optime")){
+							 opTime=fileItem.getString();
+						}else{
+							 clTime=fileItem.getString();
+						}
+						RestRegister restRegister=new RestReister(restName,restAddress,restContact,ownerId,new City("city"),optime,clTime);
+						restRegister.saveRecord();
+					}
+					else{
+						File file= new File (realPath,fileItem.getName());
+						try{
+							fileItem.write(file);
+						}catch (Exception e){
+							e.printStackTrace();
+						}
+					
 					}
 				}
 			}

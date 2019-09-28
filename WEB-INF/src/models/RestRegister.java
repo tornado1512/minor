@@ -1,38 +1,43 @@
  package models;
 import java.sql.*;
 import org.jasypt.util.password.StrongPasswordEncryptor;
-public class Restreg{
-    private Integer restId;
-    private String restname;
-    private String restaddress;
-    private String restcontact;
+public class RestRegister{
+    private Integer restRegisterId;
+    private String restName;
+    private String restAddress;
+    private String restContact;
+	private Integer ownerId;
+	private City city; 
+	private String opTime;
+	private String clTime;
 
-    public Restreg(){
+    public RestRegister(){
 
     }
-	public Restreg(String restname ,String restaddress, String restcontact){
-		this.restname=restname;
-        this.restaddress=restaddress;
-        this.restcontact=restcontact;
-    }
-    public Restreg(Integer restId ,String restname ,String restaddress, String restcontact){
-        this.restId=restId;
-        this.restname=restname;
-        this.restaddress=restaddress;
-        this.restcontact=restcontact;
+    public RestRegister(String restName ,String restAddress, String restContact,Integer ownerId,City city,String opTime,String clTime ){
+        this.restName=restName;
+        this.restAddress=restAddress;
+        this.restContact=restContact;
+		this.ownerId=ownerId;
+		this.city=city;
+		this.opTime=opTime;
+		this.clTime=clTime;
     }
 
     public boolean saveRecord(){
        boolean flag=false;
 		try{
-
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/minor?user=root&password=1234");
-			String query="insert into user (rest_name,rest_address,rest_contact) value(?,?,?)";
+			String query="insert into rest_registers (rest_name,rest_address,rest_contact,owner_id,city_id,opTime,clTime) value(?,?,?,?,?,?,?)";
 			PreparedStatement pst=con.prepareStatement(query);
-			pst.setString(1,restname); 
-			pst.setString(2,restaddress); 
-			pst.setString(3,restcontact); 
+			pst.setString(1,restName); 
+			pst.setString(2,restAddress); 
+			pst.setString(3,restContact);
+			pst.setInt(4,ownerId);
+			pst.setInt(5,city.getCityId());
+			pst.setString(6,opTime);
+			pst.setString(7,clTime);
 			int i=pst.executeUpdate();
 			if(i==1){
 				flag=true;

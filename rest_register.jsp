@@ -7,17 +7,9 @@
         <title>Resturant register</title>
     </head>
     <body>
-            <% String errMsg = (String)request.getAttribute("err_msg"); %>
-
-            <% if(errMsg!=null){ %>
-            <div style="color:red">
-              <%= errMsg %>
-            </div>
-            <% } %>
         <form action="Restaurant.do"method="post" id="regform" enctype="multipart/form-data">
-            restaurant name:
+            Restaurant name:
             <input type="text" name="restName" id="restName"/></br>
-            <!--<span id="reserr" class="errMsg">restaurant name must be at least 3 character</span></br>-->
 			City:
 			<select name="city" id="city">
 				<option>jabalpur</option>
@@ -26,21 +18,28 @@
 			</select></br>
             restaurant Address:
             <input type="text" name="restAddress" id="restAddress"/>
-			</br>
+			</br></br>
             restaurant Contact no:
-            <input type="number" name="restCont" id="restCont"/></br>
+            <input type="number" name="restCont" id="restCont"/></br></br>
             <!--<span id="conterr" class="errMsg">Invalid Contact must be at least 10 character</span></br>-->
 			
 			Owner id:
-			<input type="number" name="ownerId" id="onwerId"/></br>
+			<input type="number" name="ownerId" id="onwerId"/></br></br>
 			
+			
+			Opening Time
+			<input type="time" name="optime"/></br></br>
+			
+			Closing Time
+			<input type="time" name="cltime"/></br></br>
+            <input type="submit" value="Register"/>
+
 			restaurant Image:
 			<div id="box">
             <input type="file" name="img" multiple id="restImage">
 			</div>
 			<input type="button" value="add more pictures" id="pic"/>
-			
-            <input type="submit" value="Register"/>
+			</br></br>
 
         </form>
     </body>
