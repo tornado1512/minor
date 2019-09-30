@@ -49,7 +49,7 @@
 
   <servlet-mapping>
   <servlet-name>app004</servlet-name>
-  <url-pattern>/owner_regsiter.do</url-pattern>
+  <url-pattern>/owner_register.do</url-pattern>
   </servlet-mapping>
 
    <servlet>

@@ -12,13 +12,13 @@
 
             <% if(errmsg!=null){ %>
             <div style="color:red">
-              <%= errMsg %>
+              <%= errmsg %>
             </div>
             <% } %> 
 
 
 
-        <form action="owner_regsiter.do" id="regform" method="post">
+        <form action="owner_register.do" id="regform" method="post">
             Owner name:
             <input type="text" name="oname" id="oname"/>
             <span id="unmerr" class="errmsg"> User Name must be at least 3 characters</span><br>
