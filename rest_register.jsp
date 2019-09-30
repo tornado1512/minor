@@ -20,7 +20,7 @@
             <input type="text" name="restAddress" id="restAddress"/>
 			</br></br>
             restaurant Contact no:
-            <input type="number" name="restCont" id="restCont"/></br></br>
+            <input type="text" name="restContact" id="restContact"/></br></br>
             <!--<span id="conterr" class="errMsg">Invalid Contact must be at least 10 character</span></br>-->
 			
 			Owner id:
@@ -32,14 +32,15 @@
 			
 			Closing Time
 			<input type="time" name="cltime"/></br></br>
-            <input type="submit" value="Register"/>
+            
 
 			restaurant Image:
 			<div id="box">
-            <input type="file" name="img" multiple id="restImage">
+            <input type="file" name="img"  id="file1">
 			</div>
 			<input type="button" value="add more pictures" id="pic"/>
 			</br></br>
+			<input type="submit" value="Register"/>
 
         </form>
     </body>

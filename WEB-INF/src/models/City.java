@@ -5,7 +5,7 @@ public class City{
 	private Integer cityId;
 	private String cityName;
 
-	public City(City cityName){
+	public City(String cityName){
 		this.cityName=cityName;
 	}
 	
@@ -14,8 +14,8 @@ public class City{
 	}
 	public Integer getCityId(){
 		try{
-			class.ForName("com.mysql.jdbc.Driver");
-			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:9090/minor?user=root&password=1234");
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/minor?user=root&password=1234");
 			String query = "select city_id from cities where city_name=?";
 			PreparedStatement pst=con.prepareStatement(query);
 			pst.setString(1,cityName);
@@ -37,8 +37,8 @@ public class City{
 	}
 	public Integer getRecord(){
 		try{
-			class.ForName("com.mysql.jdbc.Driver");
-			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:9090/minor?user=root&password=1234");
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/minor?user=root&password=1234");
 			String query = "select city_id from cities where city_name=?";
 			PreparedStatement pst=con.prepareStatement(query);
 			pst.setString(1,cityName);

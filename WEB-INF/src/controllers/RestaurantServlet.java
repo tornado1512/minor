@@ -1,3 +1,4 @@
+
 package controllers;
 
 import javax.servlet.http.*;
@@ -19,17 +20,19 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 
 public class RestaurantServlet extends HttpServlet{
-	public void doGet(HttpServletRequest request,HttpServletResponse response) throws IOException,ServletException{
+	public void doPost(HttpServletRequest request,HttpServletResponse response) throws IOException,ServletException{
 		String nextPage="";
 		String restName="";
 		String restAddress="";
 		String city="";
-		String restCont="";
-		Integer ownerId="";
+		String restContact="";
+		Integer ownerId=0;
 		String opTime="";
 		String clTime="";
-
-
+		RestRegister restRegister;
+		int size=100;
+		int i=0;
+		String [] pics =new String[100];
 		HttpSession session=request.getSession();
 		
 		if(ServletFileUpload.isMultipartContent(request)){
@@ -43,39 +46,58 @@ public class RestaurantServlet extends HttpServlet{
 					if(fileItem.isFormField()){
 						if(fileItem.getFieldName().equals("restName")){
 							restName=fileItem.getString();
+							System.out.println(restName);
 						}
 						else if(fileItem.getFieldName().equals("city")){
 							city=fileItem.getString();
+							System.out.println(city);
+							
 						}
-						else if(fileItem.getFieldName().equals("address")){
+						else if(fileItem.getFieldName().equals("restAddress")){
 							restAddress=fileItem.getString();
+							System.out.println(restAddress);
 						}
 						else if(fileItem.getFieldName().equals("restContact")){
 							restContact=fileItem.getString();
+							System.out.println(restContact);
 						}
 						else if(fileItem.getFieldName().equals("ownerId")){
 							ownerId=Integer.parseInt(fileItem.getString());
+							System.out.println(ownerId);
 						}
 						else if(fileItem.getFieldName().equals("optime")){
 							 opTime=fileItem.getString();
+							 System.out.println(opTime);
 						}else{
 							 clTime=fileItem.getString();
+							 System.out.println(clTime);
 						}
-						RestRegister restRegister=new RestReister(restName,restAddress,restContact,ownerId,new City("city"),optime,clTime);
-						restRegister.saveRecord();
+						//restRegister=new RestRegister(restName,restAddress,restContact,ownerId,new City(city),opTime,clTime);
+						//restRegister.saveRecord();
 					}
 					else{
 						File file= new File (realPath,fileItem.getName());
 						try{
 							fileItem.write(file);
+							pics[i]=file.getAbsolutePath();
+							//RestPic rp= new RestPic(file.getAbsolutePath(),restRegister);
+							i++;
 						}catch (Exception e){
 							e.printStackTrace();
 						}
 					
 					}
+					
+					restRegister=new RestRegister(restName,restAddress,restContact,ownerId,new City(city),opTime,clTime);
+					restRegister.saveRecord();
+					
+					size=i;
+					for(int j=0;j<size;j++){
+						RestPic rp=new RestPic(pics[j],restRegister);
+					}
 				}
 			}
-			catch(Exception e){
+			catch(FileUploadException e){
 				e.printStackTrace();
 			}
 
@@ -111,8 +133,8 @@ public class RestaurantServlet extends HttpServlet{
 		}
 		*/
 
-		System.out.println(flag+" ~~~~~~ "+nextPage);
+		//System.out.println(flag+" ~~~~~~ "+nextPage);
 
-		request.getRequestDispatcher(nextPage).forward(request,response);
+		request.getRequestDispatcher("next.jsp").forward(request,response);
 	}
 }

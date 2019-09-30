@@ -10,7 +10,7 @@ public class RestPic {
 		this.picPath=picPath;
 		this.restRegisterId=restRegisterId;
 	}
-
+	
 	public void savePic(){
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
@@ -18,10 +18,11 @@ public class RestPic {
 			String query="insert into rest_pics(pic_path,rest_register_id) value(?,?)";
 			PreparedStatement pst=con.prepareStatement(query);
 			pst.setString(1,picPath); 
-			pst.setInt(2,restRegisterId); 
+			pst.setInt(2,restRegisterId.getRestRegisterId()); 
 			int i=pst.executeUpdate();
 		}
-		catch (){
+		catch (ClassNotFoundException |SQLException e){
+			e.printStackTrace();
 		}
 	}
 	public void setRestPicId(Integer restPicId){
@@ -40,7 +41,7 @@ public class RestPic {
 	public void setRestRegisterId(RestRegister restRegisterId){
 		this.restRegisterId= restRegisterId;
 	}
-	public RestRegisterId getRestRegisterId(){
+	public RestRegister getRestRegisterId(){
 		return restRegisterId;
 	}
 }
