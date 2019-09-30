@@ -13,11 +13,11 @@
   </description>
 <servlet>
 	<servlet-name>app001</servlet-name>
-	<servlet-class>controllers.RegisterServlet</servlet-class>
+	<servlet-class>controllers.UserRegisterServlet</servlet-class>
 </servlet>
 <servlet-mapping>
 	<servlet-name>app001</servlet-name>
-	<url-pattern>/register.do</url-pattern>
+	<url-pattern>/user_register.do</url-pattern>
 </servlet-mapping>
 
 <servlet>

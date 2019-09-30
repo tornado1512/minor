@@ -56,13 +56,13 @@ public class RegisterOwner{
 
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/minor?user=root&password=1234");
-			String query="insert into user (owner_name,email,password) value(?,?,?)";
+			String query="insert into owners (owner_name,email,password) value(?,?,?)";
 			PreparedStatement pst=con.prepareStatement(query);
 			StrongPasswordEncryptor spe=new StrongPasswordEncryptor();
-			String spass=spe.encryptPassword(password);
+			String enpass=spe.encryptPassword(password);
 			pst.setString(1,ownerName); 
 			pst.setString(2,email); 
-			pst.setString(3,spass); 
+			pst.setString(3,enpass); 
 			int i=pst.executeUpdate();
 			if(i==1){
 				flag=true;
@@ -83,7 +83,7 @@ public class RegisterOwner{
 
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/minor?user=root&password=1234");
-			String query="select password from owner where email=?";
+			String query="select password from owners where email=?";
 			PreparedStatement pst=con.prepareStatement(query);
 			pst.setString(1,email);
 			ResultSet rst=pst.executeQuery();
