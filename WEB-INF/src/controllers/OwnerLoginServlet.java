@@ -14,7 +14,7 @@ import models.*;
 	String password=request.getParameter("passw");
 	RegisterOwner owner=new RegisterOwner(oname,email,password);
 	if(owner.checkLogin()){
-		nextPage="home.jsp";
+		nextPage="my_rest_home.jsp";
 	}
 	request.getRequestDispatcher(nextPage).forward(request,response);
 	}

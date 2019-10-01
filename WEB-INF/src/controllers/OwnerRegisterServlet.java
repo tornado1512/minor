@@ -46,7 +46,7 @@ public class OwnerRegisterServlet extends HttpServlet{
 		RegisterOwner owner=new RegisterOwner(ownerName ,email,password);
 		if(flag){
 			if(owner.saveRecord()){
-				nextPage="home.jsp";
+				nextPage="rest_register.jsp";
 			}
 		}else{
 			request.setAttribute("err_msg",errorMessage);

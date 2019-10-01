@@ -11,7 +11,7 @@ public class RestPic {
 		this.restRegisterId=restRegisterId;
 	}
 	
-	public void savePic(){
+	public void savePics(){
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/minor?user=root&password=1234");

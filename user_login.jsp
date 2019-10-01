@@ -1,11 +1,6 @@
 <!doctype html>
 <html lang="en">
  <head>
-  <meta charset="UTF-8">
-  <meta name="Generator" content="EditPlus®">
-  <meta name="Author" content="">
-  <meta name="Keywords" content="">
-  <meta name="Description" content="">
   <title>Document</title>
  </head>
  <body>
@@ -17,10 +12,12 @@
   </div>
    <% } %> 
 
-  <form action="login.do" method="post">
+  <form action="user_login.do" method="post">
 	Email<input type="email" name="email" >
 	Password<input type="password" name="passw" >
 	<input type="submit" value="login">
   </form>
+  <h1>New User ! create your Account</h1>
+  <a href="show_user_register.do">register/user</a></br></br>
  </body>
 </html>

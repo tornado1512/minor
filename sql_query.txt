@@ -82,7 +82,7 @@ password varchar(100) not null
 insert into cities(city_name) values ('Jabalpur'),('Bhopal'),('Indore');
 select * from cities;
 
-insert into categories(categ_name) values ('Chinese'),('South Indian'),('Italian'),('North Indian');
+insert into categories(category_name) values ('Chinese'),('South Indian'),('Italian'),('North Indian');
 select * from categories;
 
 insert food (food_name,categ_id) values ('Hakka Noodles',1),('Veg Manchuria',1),('Spring rolls',1),

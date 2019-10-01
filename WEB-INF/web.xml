@@ -12,57 +12,93 @@
      Welcome to Tomcat
   </description>
 <servlet>
-	<servlet-name>app001</servlet-name>
+  <servlet-name>app001</servlet-name>
+  <servlet-class>controllers.ShowUserLoginServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>app001</servlet-name>
+  <url-pattern>/show_user_login.do</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>app002</servlet-name>correct
+	<servlet-class>controllers.UserLoginServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>app002</servlet-name>
+	<url-pattern>/user_login.do</url-pattern>
+</servlet-mapping>
+
+<servlet>
+  <servlet-name>app003</servlet-name>
+  <servlet-class>controllers.ShowUserRegisterServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>app003</servlet-name>
+  <url-pattern>/show_user_register.do</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>app004</servlet-name>
 	<servlet-class>controllers.UserRegisterServlet</servlet-class>
 </servlet>
 <servlet-mapping>
-	<servlet-name>app001</servlet-name>
+	<servlet-name>app004</servlet-name>
 	<url-pattern>/user_register.do</url-pattern>
 </servlet-mapping>
 
 <servlet>
-	<servlet-name>app002</servlet-name>
-	<servlet-class>controllers.LoginServlet</servlet-class>
+  <servlet-name>app005</servlet-name>
+  <servlet-class>controllers.ShowOwnerLoginServlet</servlet-class>
 </servlet>
 <servlet-mapping>
-	<servlet-name>app002</servlet-name>
-	<url-pattern>/login.do</url-pattern>
+  <servlet-name>app005</servlet-name>
+  <url-pattern>/show_owner_login.do</url-pattern>
 </servlet-mapping>
 
-
-  <servlet>
-  <servlet-name>app003</servlet-name>
-  <servlet-class>controllers.RestaurantServlet</servlet-class>
-  </servlet>
-
-  <servlet-mapping>
-  <servlet-name>app003</servlet-name>
-  <url-pattern>/Restaurant.do</url-pattern>
-  </servlet-mapping>
-
-
-
-  <servlet>
-  <servlet-name>app004</servlet-name>
-  <servlet-class>controllers.OwnerRegisterServlet</servlet-class>
-  </servlet>
-
-  <servlet-mapping>
-  <servlet-name>app004</servlet-name>
-  <url-pattern>/owner_register.do</url-pattern>
-  </servlet-mapping>
-
-   <servlet>
-  <servlet-name>app005</servlet-name>
+<servlet>
+  <servlet-name>app006</servlet-name>
   <servlet-class>controllers.OwnerLoginServlet</servlet-class>
-  </servlet>
-
-  <servlet-mapping>
-  <servlet-name>app005</servlet-name>
+</servlet>
+<servlet-mapping>
+  <servlet-name>app006</servlet-name>
   <url-pattern>/owner_login.do</url-pattern>
-  </servlet-mapping>
+</servlet-mapping>
 
+<servlet>
+  <servlet-name>app007</servlet-name>
+  <servlet-class>controllers.ShowOwnerRegisterServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>app007</servlet-name>
+  <url-pattern>/show_owner_register.do</url-pattern>
+</servlet-mapping>
 
+<servlet>
+  <servlet-name>app008</servlet-name>
+  <servlet-class>controllers.OwnerRegisterServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>app008</servlet-name>
+  <url-pattern>/owner_register.do</url-pattern>
+</servlet-mapping>
 
+<servlet>
+  <servlet-name>app009</servlet-name>
+  <servlet-class>controllers.RestaurantServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>app009</servlet-name>
+  <url-pattern>/Restaurant.do</url-pattern>
+</servlet-mapping>
+
+<servlet>
+  <servlet-name>app010</servlet-name>
+  <servlet-class>controllers.AddMenuServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>app010</servlet-name>
+  <url-pattern>/add_menu.do</url-pattern>
+</servlet-mapping>
 
 </web-app>

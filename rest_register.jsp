@@ -32,6 +32,12 @@
 			
 			Closing Time
 			<input type="time" name="cltime"/></br></br>
+
+			Category:</br>
+			<input type="checkbox" name="category1" value="Chinese" />
+			<input type="checkbox" name="category2" value="South Indian" />
+			<input type="checkbox" name="category3" value="North Indian" />
+			<input type="checkbox" name="category4" value="Italian" />
             
 
 			restaurant Image:

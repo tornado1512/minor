@@ -1,4 +1,3 @@
-
 package controllers;
 
 import javax.servlet.http.*;
@@ -29,9 +28,13 @@ public class RestaurantServlet extends HttpServlet{
 		Integer ownerId=0;
 		String opTime="";
 		String clTime="";
+		String category1="";
+		String category2="";
+		String category3="";
+		String category4="";
 		RestRegister restRegister;
 		int size=100;
-		int i=0;
+		int i=-1;
 		String [] pics =new String[100];
 		HttpSession session=request.getSession();
 		
@@ -44,8 +47,6 @@ public class RestaurantServlet extends HttpServlet{
 				realPath+="images";
 				System.out.println(fileItems.size());
 				for(FileItem fileItem:fileItems){
-					System.out.println(i);
-					i++;
 					//System.out.println(fileItem.getFieldName());
 					if(fileItem.isFormField()){
 						if(fileItem.getFieldName().equals("restName")){
@@ -74,7 +75,24 @@ public class RestaurantServlet extends HttpServlet{
 						else if(fileItem.getFieldName().equals("optime")){
 							 opTime=fileItem.getString();
 							 System.out.println(opTime);
-						}else{
+						}
+						else if(fileItem.getFieldName().equals("category1")){
+							 category1=fileItem.getString();
+							 System.out.println(category1);
+						}
+						else if(fileItem.getFieldName().equals("category2")){
+							 category2=fileItem.getString();
+							 System.out.println(category2);
+						}
+						else if(fileItem.getFieldName().equals("category3")){
+							 category3=fileItem.getString();
+							 System.out.println(category3);
+						}
+						else if(fileItem.getFieldName().equals("category4")){
+							 category4=fileItem.getString();
+							 System.out.println(category4);
+						}
+						else{
 							 clTime=fileItem.getString();
 							 System.out.println(clTime);
 							 //clSystem.out.println("hello4");
@@ -84,12 +102,13 @@ public class RestaurantServlet extends HttpServlet{
 					}
 					else{
 						File file= new File (realPath,fileItem.getName());
+						i++;
 						try{
 							fileItem.write(file);
 							pics[i]=file.getAbsolutePath();
 							System.out.println(file.getAbsolutePath());
 							//RestPic rp= new RestPic(file.getAbsolutePath(),restRegister);
-							i++;
+							System.out.println("i="+i);
 						}catch (Exception e){
 							e.printStackTrace();
 						}
@@ -100,11 +119,37 @@ public class RestaurantServlet extends HttpServlet{
 					}
 					restRegister=new RestRegister(restName,restAddress,restContact,ownerId,new City(city),opTime,clTime);
 					restRegister.saveRecord();
-					
-					//size=i;
-					//for(int j=0;j<size;j++){
-						//RestPic rp=new RestPic(pics[j],restRegister);
-					//}
+					size=i;
+					for(int j=0;j<size;j++){
+						System.out.println(j+"pic no:"+pics[j]);
+						RestPic rp=new RestPic(pics[j],restRegister);
+						rp.savePics();
+					}
+					if(category1!=null){
+						System.out.println(category1);
+						Category category =new Category(category1);
+						RestCategory restCat=new RestCategory(restRegister,category);
+						System.out.println("chl gaya");
+						restCat.save();
+					}
+					 if(category2!=null){
+						Category category=new Category(category2);
+						RestCategory restCat=new RestCategory(restRegister,category);
+						restCat.save();
+						System.out.println("chl gaya1");
+					}
+					 if(category3!=null){
+						Category category=new Category(category3);
+						RestCategory restCat=new RestCategory(restRegister,category);
+						restCat.save();
+						System.out.println("chl gaya2");
+					}
+					 if(category4!=null){
+						Category category=new Category(category4);
+						RestCategory restCat=new RestCategory(restRegister,category);
+						restCat.save();
+						System.out.println("chl gaya3");
+					}
 				}catch(FileUploadException e){
 				e.printStackTrace();
 			}
@@ -143,6 +188,6 @@ public class RestaurantServlet extends HttpServlet{
 
 		//System.out.println(flag+" ~~~~~~ "+nextPage);
 
-		request.getRequestDispatcher("next.jsp").forward(request,response);
+		request.getRequestDispatcher("my_rest_home.jsp").forward(request,response);
 	}
 }

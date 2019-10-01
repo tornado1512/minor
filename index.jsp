@@ -1,11 +1,7 @@
 <!doctype html>
 <html lang="en">
  <head>
-  <meta charset="UTF-8">
-  <meta name="Generator" content="EditPlus®">
-  <meta name="Author" content="">
-  <meta name="Keywords" content="">
-  <meta name="Description" content="">
+
   <title>Document</title>
  </head>
  <body>
@@ -15,10 +11,9 @@
  <h1>Restaurant</h1>
  <h1>offer</h1>
 
-  <a href="user_login.jsp">login/user</a></br></br>
-  <a href="user_register.jsp">register/user</a></br></br>
+  <h1><a href="show_user_login.do">login/user</a></br></br></h1>
+ 
+  <h1><a href="show_owner_login.do">login/owner</a></br></br></h1>
   
-  <a href="owner_login.jsp">login/owner</a></br></br>
-  <a href="owner_register.jsp">register/owner</a></br></br>
  </body>
 </html>
