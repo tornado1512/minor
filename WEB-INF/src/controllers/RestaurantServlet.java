@@ -28,10 +28,10 @@ public class RestaurantServlet extends HttpServlet{
 		Integer ownerId=0;
 		String opTime="";
 		String clTime="";
-		String category1="";
-		String category2="";
-		String category3="";
-		String category4="";
+		String category1=null;
+		String category2=null;
+		String category3=null;
+		String category4=null;
 		RestRegister restRegister;
 		int size=100;
 		int i=-1;
@@ -121,7 +121,7 @@ public class RestaurantServlet extends HttpServlet{
 					restRegister.saveRecord();
 					size=i;
 					for(int j=0;j<size;j++){
-						System.out.println(j+"pic no:"+pics[j]);
+						//System.out.println(j+"pic no:"+pics[j]);
 						RestPic rp=new RestPic(pics[j],restRegister);
 						rp.savePics();
 					}
