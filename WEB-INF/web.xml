@@ -101,4 +101,31 @@
   <url-pattern>/add_menu.do</url-pattern>
 </servlet-mapping>
 
+<servlet>
+  <servlet-name>app011</servlet-name>
+  <servlet-class>controllers.AddCategoryAServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>app011</servlet-name>
+  <url-pattern>/collect_category.do</url-pattern>
+</servlet-mapping>
+
+<servlet>
+  <servlet-name>app012</servlet-name>
+  <servlet-class>controllers.GetItemServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>app012</servlet-name>
+  <url-pattern>/get.item.do</url-pattern>
+</servlet-mapping>
+
+<servlet>
+  <servlet-name>app013</servlet-name>
+  <servlet-class>controllers.AddItemAServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>app013</servlet-name>
+  <url-pattern>/add_item.do</url-pattern>
+</servlet-mapping>
+
 </web-app>

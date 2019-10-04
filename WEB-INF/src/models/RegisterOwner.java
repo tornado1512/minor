@@ -24,7 +24,21 @@ public class RegisterOwner{
 			this.ownerId=ownerId;
 	}
 	public Integer getOwnerId(){
+			try{
+					Class.forName("com.mysql.jdbc.Driver");
+					Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/minor?user=root&password=1234");
+					String query="select owner_id from owners where email=? ";
+					PreparedStatement pst = con.prepareStatement(query);
+					pst.setString(1,email);
+					ResultSet rs = pst.executeQuery();
+					rs.next();
+					ownerId = rs.getInt(1);
+					con.close();
+			}catch(ClassNotFoundException | SQLException e){
+					e.printStackTrace();
+			}
 			return ownerId;
+
 	}
 
 	public void setOwnerName(String ownerName){

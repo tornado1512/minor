@@ -22,19 +22,31 @@ category_id int not null auto_increment primary key,
 category_name varchar(30) not null
 );
 
+
 create table rest_registers
+
 (
+
 rest_register_id int not null auto_increment primary key,
+
 rest_name varchar(50) not null unique,
+
 rest_address varchar(50) not null unique,
+
 rest_contact varchar(20)  not null unique,
+
 owner_id int not null,
+
 city_id int not null,
+
 opTime varchar(20) not null,
+
 clTime varchar(20) not null,
+
 constraint fk_rest_registers_owners foreign key (owner_id) references owners (owner_id),
 constraint fk_rest_registers_cities foreign key (city_id) references cities (city_id)
 );
+
 
 create table rest_pics
 (
@@ -57,8 +69,8 @@ create table foods
 (
 food_id int not null auto_increment primary key,
 food_name varchar(30) not null ,
-rest_category_id int not null,
-constraint fk_food_rest_categories foreign key (rest_category_id) references rest_categories(rest_category_id)
+category_id int not null,
+constraint fk_foods_categories foreign key (category_id) references categories(category_id)
 );
 
 create table rest_foods
@@ -85,7 +97,7 @@ select * from cities;
 insert into categories(category_name) values ('Chinese'),('South Indian'),('Italian'),('North Indian');
 select * from categories;
 
-insert food (food_name,categ_id) values ('Hakka Noodles',1),('Veg Manchuria',1),('Spring rolls',1),
+insert into foods(food_name,category_id) values ('Hakka Noodles',1),('Veg Manchuria',1),('Spring rolls',1),
 ('Szechwan Chilli Paneer',1), ('Honey Chilli Potato',1) , ('Momos',1),('Vegetable Fried Rice',1),
 ('Vegetable Manchow Soup',1), ('Veg Crispy',1) , ('Dim Sums',1);
 select * from food;

@@ -119,8 +119,8 @@ public class RestaurantServlet extends HttpServlet{
 					}
 					restRegister=new RestRegister(restName,restAddress,restContact,ownerId,new City(city),opTime,clTime);
 					restRegister.saveRecord();
-					size=i;
-					for(int j=0;j<size;j++){
+					size=i+1;
+					for(int j=0;j<=size;j++){
 						//System.out.println(j+"pic no:"+pics[j]);
 						RestPic rp=new RestPic(pics[j],restRegister);
 						rp.savePics();

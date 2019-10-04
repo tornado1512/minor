@@ -9,6 +9,7 @@ import models.*;
 
 public class OwnerRegisterServlet extends HttpServlet{
 	public void doPost(HttpServletRequest request,HttpServletResponse response) throws IOException,ServletException{
+
         String nextPage=" ";
 
 		HttpSession session=request.getSession();
@@ -47,6 +48,8 @@ public class OwnerRegisterServlet extends HttpServlet{
 		if(flag){
 			if(owner.saveRecord()){
 				nextPage="rest_register.jsp";
+				int oid = owner.getOwnerId();
+				request.setAttribute("oid",oid);
 			}
 		}else{
 			request.setAttribute("err_msg",errorMessage);

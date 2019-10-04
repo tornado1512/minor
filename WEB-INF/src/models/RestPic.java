@@ -20,6 +20,7 @@ public class RestPic {
 			pst.setString(1,picPath); 
 			pst.setInt(2,restRegisterId.getRestRegisterId()); 
 			int i=pst.executeUpdate();
+			con.close();
 		}
 		catch (ClassNotFoundException |SQLException e){
 			e.printStackTrace();

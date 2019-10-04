@@ -1,9 +1,33 @@
 package models;
 
+import java.sql.*;
+import java.util.ArrayList;
+
 public class Food{
 	private Integer foodId;
 	private String foodName;
 	private Category categoryId;
+	public Food(String foodName){
+		this.foodName=foodName;
+	}
+	public static ArrayList<Food> collectFood(Category category){
+		ArrayList<Food> foods = new ArrayList<Food>();
+	try{
+		
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con =DriverManager.getConnection("jdbc:mysql://localhost:3306/minor?user=root&password=1234");
+			String query="select food_name from foods where category_id=?";
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setInt(1,category.getCategoryId());
+			ResultSet rst=pst.executeQuery();
+			while(rst.next()){
+				foods.add(new Food(rst.getString(1)));
+			}
+		}catch(ClassNotFoundException|SQLException e){
+			e.printStackTrace();
+		}
+		return foods;
+	}
 
 	public void setFoodId(Integer foodId){
 			this.foodId=foodId;

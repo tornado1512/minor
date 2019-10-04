@@ -22,9 +22,9 @@
             restaurant Contact no:
             <input type="text" name="restContact" id="restContact"/></br></br>
             <!--<span id="conterr" class="errMsg">Invalid Contact must be at least 10 character</span></br>-->
-			
+			<%Integer oid= (Integer)request.getAttribute("oid");%>
 			Owner id:
-			<input type="number" name="ownerId" id="onwerId"/></br></br>
+			<input type="hidden" value="<%=oid%>"  name="ownerId" id="onwerId"/></br></br>
 			
 			
 			Opening Time
@@ -34,10 +34,10 @@
 			<input type="time" name="cltime"/></br></br>
 
 			Category:</br>
-			<input type="checkbox" name="category1" value="Chinese" />
-			<input type="checkbox" name="category2" value="South Indian" />
-			<input type="checkbox" name="category3" value="North Indian" />
-			<input type="checkbox" name="category4" value="Italian" />
+			Chinese<input type="checkbox" name="category1" value="Chinese" /></br>
+			South Indian<input type="checkbox" name="category2" value="South Indian" /></br>
+			North Indian<input type="checkbox" name="category3" value="North Indian" /></br>
+			Italian<input type="checkbox" name="category4" value="Italian" /></br>
             
 
 			restaurant Image:
