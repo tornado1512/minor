@@ -15,7 +15,7 @@ public class GetItemServlet extends HttpServlet{
 		String category = request.getParameter("category");
 		Category cat =new Category(category);
 		ArrayList<Food> list=Food.collectFood(cat);
-		//System.out.println(list+"````````");
+		System.out.println(list+"````````");
 
 		Gson gson = new Gson();
 		String json=gson.toJson(list);

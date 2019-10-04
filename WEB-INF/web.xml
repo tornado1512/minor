@@ -116,7 +116,7 @@
 </servlet>
 <servlet-mapping>
   <servlet-name>app012</servlet-name>
-  <url-pattern>/get.item.do</url-pattern>
+  <url-pattern>/collect_item.do</url-pattern>
 </servlet-mapping>
 
 <servlet>

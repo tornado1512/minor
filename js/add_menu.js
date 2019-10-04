@@ -6,40 +6,45 @@ function initAll(){
 }
 
 var add,aaa,rec,menuBox,form1;
-var bbb,rec2,itemBox,form2;
+var chsbtn;
+var categ;
+var bbb,rec2,itemBox,form2,chsbtn;
 function getAllElements(){
 	add = document.getElementById("add");
 	aaa= document.getElementById("aaa");
-     rec = document.getElementById("rec");
-	 menuBox = document.getElementById("menu_box");
-	 form1 = document.getElementById("form1");
-
-	 bbb= document.getElementById("bbb");
-     rec2 = document.getElementById("rec2");
-	 form2 = document.getElementById("form2");
-	 itemBox = document.getElementById("item_box");
+    rec = document.getElementById("rec");
+	menuBox = document.getElementById("menu_box");
+	form1 = document.getElementById("form1");
+	chsbtn=document.getElementById("chsbtn");
+	
+	bbb= document.getElementById("bbb");
+    rec2 = document.getElementById("rec2");
+	form2 = document.getElementById("form2");
+	itemBox = document.getElementById("item_box");
 }
 
 function setAllActions(){
-	add.onclick=collectRecords;
-	form1.onsubmit=collectMenu;
+	add.onclick=collectRecords1;
+	chsbtn.onclick=collectMenu2;
 }
-var reqObj1
-function collectMenu(){
+var reqObj2
+function collectMenu2(){
 	menuBox.style.display="none";
-	alert("hello");
-	reqObj1 =  new XMLHttpRequest();
-	reqObj1.open('get','collect_item.do',true);
-	reqObj1.onreadystatechange = showRecord1;
-	reqObj1.send(null);
+	itemBox.style.visibility="visible";
+	categ=document.getElementById("categ");
+	//alert(categ.value);
+	reqObj2 =  new XMLHttpRequest();
+	reqObj2.open('get','collect_item.do?category='+categ.value,true);
+	reqObj2.onreadystatechange = showRecord2;
+	reqObj2.send(null);
 }
 
-function showRecord1(){
-	if(reqObj1.readyState==4&&reqObj1.status==200){
-				alert(reqObj1.responseText);
+function showRecord2(){
+	if(reqObj2.readyState==4&&reqObj2.status==200){
+		//alert(reqObj2.responseText);
 		
-	var records = eval(reqObj1.responseText);
-		alert(records);
+	var records = eval(reqObj2.responseText);
+		//alert(records);
 
 		var len = records.length;
 		for(i=0;i<len;i++){
@@ -49,18 +54,21 @@ function showRecord1(){
 				for(x in obj){
 						var cell1= row.insertCell( n);
 						cell1.innerHTML= obj[x];
-						n++;	
+						n++;
+						var cell2=row.insertCell(n);
+						var inp=document.createElement("input");
+						inp.setAttribute("type","text");
+						inp.setAttribute("name","price");
+						cell2.appendChild(inp);
 				}
 		   }
 		}
 }
 
-}
-
 var reqObj;
-function collectRecords(){
+function collectRecords1(){
 	menuBox.style.visibility="visible";
-	alert("hello");
+	//alert("hello");
 	reqObj =  new XMLHttpRequest();
 	reqObj.open('get','collect_category.do',true);
 	reqObj.onreadystatechange = showRecord;
@@ -87,7 +95,10 @@ function showRecord(){
 						var inp =document.createElement("input");
 						inp.setAttribute("type","radio");
 						inp.setAttribute("name","category");
+						inp.setAttribute("id","categ");
+						inp.setAttribute("value",obj[x]);
 						cell2.appendChild(inp);	
+						//alert(document.getElementById("categ").value);
 				}
 		   }
 		}

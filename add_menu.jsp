@@ -8,9 +8,7 @@
  <body>
 		<span id="add">Add your menu</span>
 		<div id="menu_box" style="visibility:hidden;" >
-		
-		<form action="get_item.do" id="form1">
-				<table  id="aaa" >
+				<table  id="form1" >
 						<thead>
 							<th>Categories</th>
 							<th>Select</th>
@@ -19,17 +17,14 @@
 							
 						</tbody>
 						<tr>
-						  <td colspan="2"><input type="submit" value="Choose" /></td>
+						  <td colspan="2"><input type="button" value="Choose"  id="chsbtn"/></td>
 						 </tr>
 				</table>
-			</form>
 		</div>
-		<div  id="item_box" style="visbility:hidden;">
-			<form action="add_items.do"  id="form2">
+		<div  id="item_box" style="visibility:hidden;">
 				<table   id="bbb" >
 					<thead>
 							<th>Food Items</th>
-							<th>Select</th>
 							<th>Price</th>
 						</thead>
 						<tbody id="rec2">
@@ -39,7 +34,6 @@
 						  <td colspan="2"><input type="submit" value="Show Menu" /></td>
 						 </tr>
 				</table>
-			</form>
 		</div>
  </body>
 </html>
