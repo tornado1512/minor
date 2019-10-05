@@ -22,16 +22,19 @@
 				</table>
 		</div>
 		<div  id="item_box" style="visibility:hidden;">
+			<form action="save_menu.do" method="post">	
 				<table   id="bbb" >
 					<thead>
+						<tr>
 							<th>Food Items</th>
 							<th>Price</th>
+						</tr>
 						</thead>
 						<tbody id="rec2">
 							
 						</tbody>
 						<tr>
-						  <td colspan="2"><input type="submit" value="Show Menu" /></td>
+							<td colspan="2"><input type="submit" value="Save Menu" /></td>
 						 </tr>
 				</table>
 		</div>

@@ -121,11 +121,11 @@
 
 <servlet>
   <servlet-name>app013</servlet-name>
-  <servlet-class>controllers.AddItemAServlet</servlet-class>
+  <servlet-class>controllers.SaveMenuServlet</servlet-class>
 </servlet>
 <servlet-mapping>
   <servlet-name>app013</servlet-name>
-  <url-pattern>/add_item.do</url-pattern>
+  <url-pattern>/save_item.do</url-pattern>
 </servlet-mapping>
 
 </web-app>
