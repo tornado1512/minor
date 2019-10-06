@@ -7,6 +7,16 @@
         <title>Resturant register</title>
     </head>
     <body>
+
+	 <% String errmsg = (String)request.getAttribute("err_msg"); %>
+
+            <% if(errmsg!=null){ %>
+            <div style="color:red">
+              <%= errmsg %>
+            </div>
+            <% } %> 
+
+
         <form action="Restaurant.do"method="post" id="regform" enctype="multipart/form-data">
             Restaurant name:
             <input type="text" name="restName" id="restName"/></br>
@@ -21,7 +31,7 @@
 			</br></br>
             restaurant Contact no:
             <input type="text" name="restContact" id="restContact"/></br></br>
-            <!--<span id="conterr" class="errMsg">Invalid Contact must be at least 10 character</span></br>-->
+            <span id="conterr" class="errmsg">Invalid Contact must be eqaul to 10 character</span></br>
 			<%Integer oid= (Integer)request.getAttribute("oid");%>
 			Owner id:
 			<input type="hidden" value="<%=oid%>"  name="ownerId" id="onwerId"/></br></br>

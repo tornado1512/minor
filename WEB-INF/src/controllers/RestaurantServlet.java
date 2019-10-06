@@ -20,11 +20,14 @@ import org.apache.commons.fileupload.FileUploadException;
 
 public class RestaurantServlet extends HttpServlet{
 	public void doPost(HttpServletRequest request,HttpServletResponse response) throws IOException,ServletException{
+		String restName = request.getParameter("restName");
+		String restAddress = request.getParameter("restAddress");
+		String restContact = request.getParameter("restContact");
 		String nextPage="";
-		String restName="";
-		String restAddress="";
+		//String restName="";
+		//String restAddress="";
 		String city="";
-		String restContact="";
+		//String restContact="";
 		Integer ownerId=0;
 		String opTime="";
 		String clTime="";
@@ -157,26 +160,26 @@ public class RestaurantServlet extends HttpServlet{
 		}
 
 		boolean flag = true;
-		/*String errorMessage = "";
+		String errorMessage = "";
 
-		if(restname.length()<3){
+		if(restName.length()<3){
 			flag = false;
 			errorMessage = errorMessage + "Name must be at least 3 characters length<br />";
 		}
 
 
-		int addressLength = restaddress.length(); 
+		int addressLength = restAddress.length(); 
 		if(addressLength<6){
 			flag = false;
 			errorMessage = errorMessage + "Adress must be at least 6 charcters<br />";
 		}
 
-		int ContactLength = restcontact.length(); 
-		if(ContactLength==10){
+		int ContactLength = restContact.length(); 
+		if(ContactLength<10 || ContactLength>10 ){
 			flag = false;
-			errorMessage = errorMessage + "contact no. must be at 10 numeric<br/>";
+			errorMessage = errorMessage + "contact no. must be at 10 number<br/>";
 		}
-		Restreg restreg=new Restreg(restname ,restaddress,restcontact);
+		RestRegister restreg=new RestRegister(restName ,restAddress,restContact);
 		if(flag){
 			if(restreg.saveRecord()){
 				nextPage="home.jsp";
@@ -184,7 +187,7 @@ public class RestaurantServlet extends HttpServlet{
 		}else{
 			request.setAttribute("err_msg",errorMessage);
 		}
-		*/
+		
 
 		//System.out.println(flag+" ~~~~~~ "+nextPage);
 
