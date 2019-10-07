@@ -103,4 +103,15 @@ insert into foods(food_name,category_id) values ('Hakka Noodles',1),('Veg Manchu
 select * from food;
 
 
+insert into foods(food_name,category_id) values ('Panzenella',3),('grilled bread',3),('Focaccia Bread',3),('Pasta',3), ('pizza',3) , ('Mushroom Risotto',3),('Panettone',3),('Pistachio Panna Cotta',3), ('Lasagna',3) , ('Tiramisu',3);
+select * from food;
+
+insert into foods(food_name,category_id) values ('Chole Bhature',4),('Litti Chokha',4),('Kashmiri Dum Aloo',4),('Parathe',4), ('Rajma Chawal',4) , ('Dahi Vada',4),('Rabri',4),('Ghewar',4), ('Lasagna',4) , ('Lassi',4);
+select * from food;
+
+insert into foods(food_name,category_id) values ('Dosa',2),('Idli',2),('Uttapam',2),('Vada',2), ('upma',2) , ('Payasam',2),('Biryani',2),('Idiappam',2), ('Avial',2) , ('Koottu',2);
+select * from food;
+
+
+
 

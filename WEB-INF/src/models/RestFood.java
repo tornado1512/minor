@@ -1,8 +1,8 @@
 package models;
 
-public class RestaurantFood{
+public class RestFood{
 	private Integer restaurantFoodId;
-	private RestaurantCategory restaurantCategoryId;
+	private RestCategory restaurantCategoryId;
 	private Food foodId;
 	private Integer foodPrice;
 
@@ -13,10 +13,10 @@ public class RestaurantFood{
 		return restaurantFoodId;
 	}
 
-	public void setRestaurantCategory( RestaurantCategory restaurantCategoryId){
+	public void setRestaurantCategoryId( RestCategory restaurantCategoryId){
 			this.restaurantCategoryId=restaurantCategoryId;
 	}
-	public RestaurantCategory getRestaurantCategory(){
+	public RestCategory getRestaurantCategory(){
 		return restaurantCategoryId;
 	}
 

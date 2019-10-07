@@ -1,0 +1,54 @@
+create table admin_registration
+(
+email varchar(50) not null unique,
+paassword varchar(100) not null
+);
+
+create table package_categories
+(
+package_category_id int not null auto_increment primary key,
+package_category varchar(50) not null unique
+);
+
+create table type_categories
+(
+type_category_id int not null auto_increment primary key,
+type_name varchar(50) not null,
+package_category_id int not null,
+constraint fk_type_categories_package_categories foreign key(package_category_id) references package_categories(package_category_id)
+);
+
+create table accomodation
+(
+accomodation_id int not null auto_increment primary key,
+accomodation_name varchar(50) not null,
+address varchar(500) not null,
+accomodation_pic_path varchar(100) not null unique
+);
+
+create table package
+(
+package_id int not null auto_increment primary key,
+package_name varchar(100) not null,
+type_category_id int not null,
+constraint fk_package_type_categories foreign key(type_category_id) references type_categories(type_category_id),
+days int not null,
+cost int not null,
+start_end_point varchar(50) not null,
+accomodation_id int not null,
+constraint fk_package_accomodation foreign key(accomodation_id) references accomodation(accomodation_id),
+food varchar(50) not null,
+place_visit varchar(500) not null,
+transport varchar(100) not null,
+package_details varchar(500) not null,
+contact_no varchar(20) not null unique
+);
+
+create table package_pics
+(
+package_pic_id int not null auto_increment primary key,
+pic_path varchar(100) not null unique,
+pic_details varchar(500) not null,
+package_id int not null,
+constraint fk_package_pics_package foreign key(package_id) references package(package_id)
+);
