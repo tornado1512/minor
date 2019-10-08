@@ -22,7 +22,7 @@
 				</table>
 		</div>
 		<div  id="item_box" style="visibility:hidden;">
-			<form action="save_menu.do" method="post">	
+			<form action="save_menu.do" method="get">	
 				<table   id="bbb" >
 					<thead>
 						<tr>

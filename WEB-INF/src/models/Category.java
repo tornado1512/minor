@@ -33,7 +33,7 @@ public class Category{
 	
 	public Integer getCategoryId(){
 		try{
-			System.out.println("inside categ"+categoryName);
+			//System.out.println("inside categ"+categoryName);
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/minor?user=root&password=1234");
 			String query="select category_id from categories where category_name=?";
@@ -42,7 +42,7 @@ public class Category{
 			ResultSet rst=pst.executeQuery();
 			rst.next();
 			categoryId=rst.getInt(1);
-		System.out.println("inside categ"+categoryId);
+			//System.out.println("inside categ"+categoryId);
 			con.close();
 		}
 		catch (ClassNotFoundException|SQLException e){

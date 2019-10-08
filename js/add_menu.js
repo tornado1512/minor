@@ -38,33 +38,45 @@ function collectMenu2(){
 	reqObj2.onreadystatechange = showRecord2;
 	reqObj2.send(null);
 }
-
+//function for showing menu item
 function showRecord2(){
 	if(reqObj2.readyState==4&&reqObj2.status==200){
 		//alert(reqObj2.responseText);
 		
-	var records = eval(reqObj2.responseText);
+		var records = eval(reqObj2.responseText);
 		//alert(records);
-
+		var j=1;
 		var len = records.length;
 		for(i=0;i<len;i++){
-				var row = rec2.insertRow(i);
-				var n=0;
-				var obj = records[i];
-				for(x in obj){
-						var cell1= row.insertCell( n);
-						cell1.innerHTML= obj[x];
-						n++;
-						var cell2=row.insertCell(n);
-						var inp=document.createElement("input");
-						inp.setAttribute("type","text");
-						inp.setAttribute("name","price");
-						cell2.appendChild(inp);
-				}
-		   }
+			var row = rec2.insertRow(i);
+			var n=0;
+			var obj = records[i];
+			
+			for(x in obj){
+									
+				var cell1= row.insertCell( n);
+				cell1.innerHTML= obj[x];
+				n++;
+				
+				var cell2=row.insertCell(n);
+				var inp1=document.createElement("input");
+				inp1.setAttribute("type","checkbox");
+				inp1.setAttribute("value",obj[x]);
+				inp1.setAttribute("name","item"+j);
+				cell2.appendChild(inp1);
+				n++;
+				
+				var cell3=row.insertCell(n);
+				var inp=document.createElement("input");
+				inp.setAttribute("type","number");
+				inp.setAttribute("name","price"+j);
+				cell3.appendChild(inp);
+				j++;
+			}
 		}
+	}
 }
-
+//ajax for categories
 var reqObj;
 function collectRecords1(){
 	menuBox.style.visibility="visible";
@@ -74,7 +86,7 @@ function collectRecords1(){
 	reqObj.onreadystatechange = showRecord;
 	reqObj.send(null);
 }
-
+//function for showing categories
 function showRecord(){
 		if(reqObj.readyState==4&&reqObj.status==200){
 				//alert(reqObj.responseText);
