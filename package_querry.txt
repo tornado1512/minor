@@ -35,7 +35,9 @@ create table accomodation
 accomodation_id int not null auto_increment primary key,
 accomodation_name varchar(50) not null,
 address varchar(500) not null,
-accomodation_pic_path varchar(100) not null unique
+accomodation_pic_path varchar(100) not null unique,
+city_id int not null,
+constraint fk_accomodation_cities foreign key(city_id) references cities(city_id)
 );
 
 create table package

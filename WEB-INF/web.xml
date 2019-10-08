@@ -173,4 +173,13 @@
   <url-pattern>/new_ package.do</url-pattern>
 </servlet-mapping>
 
+<servlet>
+  <servlet-name>app023</servlet-name>
+  <servlet-class>controllers.PackageServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>app023</servlet-name>
+  <url-pattern>/package.do</url-pattern>
+</servlet-mapping>
+
 </web-app>

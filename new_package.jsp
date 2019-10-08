@@ -7,14 +7,18 @@
         <title>Resturant register</title>
     </head>
     <body>
-		<form action="save_package.do">
+		<form action="package.do">
 			Package Name:<input type="text" name="pacname" id="pacname" /></br></br>
+			
+			Package Category:</br>
+			National:<input type="radio" name="category" value="National" />
+			International:<input type="radio" name="category" value="International" /></br></br>
 
 			Type Category:</br>
-			religious:<input type="checkbox" name="category1" value="religious" />
-			Honeymoon:<input type="checkbox" name="category2" value="Honeymoon" />
-			Family Vacation:<input type="checkbox" name="category3" value="Family Vacation" />
-			Adventurous:<input type="checkbox" name="category4" value="Adventurous" /></br></br>
+			religious:<input type="radio" name="typecategory" value="religious" />
+			Honeymoon:<input type="radio" name="typecategory" value="Honeymoon" />
+			Family Vacation:<input type="radio" name="typecategory" value="Family Vacation" />
+			Adventurous:<input type="radio" name="typecategory" value="Adventurous" /></br></br>
 
 			Accomodation:<input type="text" name="hotel" id="hotel"/></br></br>
 

@@ -7,6 +7,9 @@ public class PackageCategory{
 	public PackageCategory(){
 
 	}
+	public PackageCategory(String packageCategory){
+		this.packageCategory=packageCategory;
+	}
 
 	public PackageCategory(Integer packageCategoryId,String packageCategory){
 		this.packageCategoryId=packageCategoryId;

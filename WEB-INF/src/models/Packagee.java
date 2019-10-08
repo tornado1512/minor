@@ -1,5 +1,7 @@
 package models;
 
+import java.sql.*;
+
 public class Packagee{
 	private Integer packageId;
 	private String packageName;
@@ -17,10 +19,11 @@ public class Packagee{
 	public Packagee(){
 
 	}
-	public Packagee(Integer packageId,String packageName,TypeCategory typeCategoryId,Integer days,Integer cost,String startEndPoint,Accomodation accomodationId, String food,String placeVisit,String transport,String packageDetails,String contactNo){
+	public Packagee(Integer packageId,String packageName,PackageCategory packageCategoryId,TypeCategory typeCategoryId,Integer days,Integer cost,String startEndPoint,Accomodation accomodationId, String food,String placeVisit,String transport,String packageDetails,String contactNo){
 		this.packageId=packageId;
 		this.packageName=packageName;
 		this.typeCategoryId=typeCategoryId;
+		this.packageCategoryId=packageCategoryId;
 		this.days=days;
 		this.cost=cost;
 		this.startEndPoint=startEndPoint;
@@ -30,6 +33,37 @@ public class Packagee{
 		this.transport=transport;
 		this.packageDetails=packageDetails;
 		this.contactNo=contactNo;
+	}
+
+	public boolean saveRecord(){
+		boolean flag=false;
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/minor?user=root&password=1234");
+			String query="insert into package (package_name,type_category_id,package_category_id,days,cost,start_end_point,accomodation_id,food,place_visit,transport,package_details,contact_no ) value(?,?,?,?,?,?,?,?,?,?,?,?)";
+			PreparedStatement pst=con.prepareStatement(query);
+			pst.setString(1,packageName); 
+			pst.setInt(2,typeCategoryId.getTypeCategoryId());
+			pst.setInt(3,typeCategoryId.getPackageCategoryId());
+			pst.setInt(4, days); 
+			pst.setInt(5,cost);
+			pst.setString(6,startEndPoint);
+			pst.setInt(7,accomodationId.getAccomodationId());
+			pst.setString(8,food);
+			pst.setString(9,placeVisit);
+			pst.setString(10, transport);
+			pst.setString(11,packageDetails);
+			pst.setString(12,contactNo);
+			int i=pst.executeUpdate();
+			if(i==1){
+				flag=true;
+			}
+			con.close();
+		}
+		catch (ClassNotFoundException|SQLException e){
+			e.printStackTrace();
+		}
+		return flag; 
 	}
 
 	public void setPackageId(Integer packageId){
