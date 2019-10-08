@@ -7,19 +7,6 @@
  </head>
  <body>
 		<span id="add">Add  new Packages</span>
-		<div id="package_box" style="visibility:hidden;" >
-				<table  id="form1" >
-						<thead>
-							<th>Categories</th>
-							<th>Select</th>
-						</thead>
-						<tbody id="rec">
-							
-						</tbody>
-						<tr>
-						  <td colspan="2"><input type="button" value="Choose"  id="chsbtn"/></td>
-						 </tr>
-				</table>
-		</div>
+		
  </body>
 </html>
