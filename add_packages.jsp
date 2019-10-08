@@ -6,7 +6,7 @@
   <title>Document</title>
  </head>
  <body>
-		<span id="add">Add  new Packages</span>
+		<span id="add_package"><a href="new_ package.do">Add  new Packages</a></span>
 		
  </body>
 </html>

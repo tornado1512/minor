@@ -164,4 +164,13 @@
   <url-pattern>/admin_login.do</url-pattern>
 </servlet-mapping>
 
+<servlet>
+  <servlet-name>app019</servlet-name>
+  <servlet-class>controllers.NewPackageServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>app019</servlet-name>
+  <url-pattern>/new_ package.do</url-pattern>
+</servlet-mapping>
+
 </web-app>
