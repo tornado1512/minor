@@ -17,9 +17,6 @@ public class RegisterOwner{
 		this.email=email;
 		this.password=password;
 	}
-
-
-
 	public void setOwnerId(Integer ownerId){
 			this.ownerId=ownerId;
 	}

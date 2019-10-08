@@ -128,4 +128,40 @@
   <url-pattern>/save_item.do</url-pattern>
 </servlet-mapping>
 
+<servlet>
+  <servlet-name>app014</servlet-name>
+  <servlet-class>controllers.ShowAdminLoginServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>app014</servlet-name>
+  <url-pattern>/show_admin_login.do</url-pattern>
+</servlet-mapping>
+
+<servlet>
+  <servlet-name>app016</servlet-name>
+  <servlet-class>controllers.ShowAdminRegisterServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>app016</servlet-name>
+  <url-pattern>/show_admin_register.do</url-pattern>
+</servlet-mapping>
+
+<servlet>
+  <servlet-name>app017</servlet-name>
+  <servlet-class>controllers.AdminRegisterServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>app017</servlet-name>
+  <url-pattern>/admin_register.do</url-pattern>
+</servlet-mapping>
+
+<servlet>
+  <servlet-name>app018</servlet-name>
+  <servlet-class>controllers.AdminLoginServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>app018</servlet-name>
+  <url-pattern>/admin_login.do</url-pattern>
+</servlet-mapping>
+
 </web-app>

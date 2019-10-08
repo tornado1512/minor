@@ -14,6 +14,8 @@
   <h1><a href="show_user_login.do">login/user</a></br></br></h1>
  
   <h1><a href="show_owner_login.do">login/owner</a></br></br></h1>
+
+  <h1><a href="show_admin_login.do">login/admin</a></h1>
   
  </body>
 </html>
