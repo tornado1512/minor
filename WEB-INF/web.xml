@@ -94,7 +94,7 @@
 
 <servlet>
   <servlet-name>app010</servlet-name>
-  <servlet-class>controllers.AddMenuServlet</servlet-class>
+  <servlet-class>controllers.ShowAddMenuServlet</servlet-class>
 </servlet>
 <servlet-mapping>
   <servlet-name>app010</servlet-name>
@@ -125,7 +125,7 @@
 </servlet>
 <servlet-mapping>
   <servlet-name>app013</servlet-name>
-  <url-pattern>/save_item.do</url-pattern>
+  <url-pattern>/save_menu.do</url-pattern>
 </servlet-mapping>
 
 </web-app>
