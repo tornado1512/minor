@@ -19,11 +19,10 @@ public class Packagee{
 	public Packagee(){
 
 	}
-	public Packagee(Integer packageId,String packageName,PackageCategory packageCategoryId,TypeCategory typeCategoryId,Integer days,Integer cost,String startEndPoint,Accomodation accomodationId, String food,String placeVisit,String transport,String packageDetails,String contactNo){
+	public Packagee(Integer packageId,String packageName,TypeCategory typeCategoryId,Integer days,Integer cost,String startEndPoint,Accomodation accomodationId, String food,String placeVisit,String transport,String packageDetails,String contactNo){
 		this.packageId=packageId;
 		this.packageName=packageName;
 		this.typeCategoryId=typeCategoryId;
-		this.packageCategoryId=packageCategoryId;
 		this.days=days;
 		this.cost=cost;
 		this.startEndPoint=startEndPoint;
@@ -40,20 +39,20 @@ public class Packagee{
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/minor?user=root&password=1234");
-			String query="insert into package (package_name,type_category_id,package_category_id,days,cost,start_end_point,accomodation_id,food,place_visit,transport,package_details,contact_no ) value(?,?,?,?,?,?,?,?,?,?,?,?)";
+			String query="insert into package (package_name,type_category_id,days,cost,start_end_point,accomodation_id,food,place_visit,transport,package_details,contact_no ) value(?,?,?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement pst=con.prepareStatement(query);
 			pst.setString(1,packageName); 
 			pst.setInt(2,typeCategoryId.getTypeCategoryId());
-			pst.setInt(3,typeCategoryId.getPackageCategoryId());
-			pst.setInt(4, days); 
-			pst.setInt(5,cost);
-			pst.setString(6,startEndPoint);
-			pst.setInt(7,accomodationId.getAccomodationId());
-			pst.setString(8,food);
-			pst.setString(9,placeVisit);
-			pst.setString(10, transport);
-			pst.setString(11,packageDetails);
-			pst.setString(12,contactNo);
+			//pst.setInt(3,typeCategoryId.getPackageCategoryId());
+			pst.setInt(3, days); 
+			pst.setInt(4,cost);
+			pst.setString(5,startEndPoint);
+			pst.setInt(6,accomodationId.getAccomodationId());
+			pst.setString(7,food);
+			pst.setString(8,placeVisit);
+			pst.setString(9, transport);
+			pst.setString(10,packageDetails);
+			pst.setString(11,contactNo);
 			int i=pst.executeUpdate();
 			if(i==1){
 				flag=true;

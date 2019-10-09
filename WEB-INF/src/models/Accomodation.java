@@ -9,6 +9,9 @@ public class Accomodation{
 	public Accomodation(){
 
 	}
+	public Accomodation(String accomodationName){
+		this.accomodationName=accomodationName;
+	}
 
 	public Accomodation(Integer accomodationId,String accomodationName,String address,String accomodationPicPath){
 		this. accomodationId= accomodationId;

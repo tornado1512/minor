@@ -13,8 +13,8 @@ public class PackageServlet extends HttpServlet{
 		String category = request.getParameter("category");
 		String typeCategory = request.getParameter("typecategory");
 		String accomodation = request.getParameter("accomodation");
-		String days = request.getParameter("days");
-		String cost=request.getParameter("cost");
+		int days = Integer.parseInt(request.getParameter("days"));
+		int cost=Integer.parseInt(request.getParameter("cost"));
 		String sePoint=request.getParameter("sepoint");
 		String food = request.getParameter("food");
 		String placeVisit = request.getParameter("plcevisit");
@@ -22,7 +22,7 @@ public class PackageServlet extends HttpServlet{
 		String details =request.getParameter("details");
 		String contactNo = request.getParameter("number");
 
-		Packagee packagee = new Packagee(pacName,category,typeCategory,accomodation,days,cost,sePoint,food ,placeVisit,transport, details,contactNo );
+		Packagee packagee = new Packagee(pacName,new PackageCategory(category),new TypeCategory(typeCategory),new Accomodation(accomodation),days,cost,sePoint,food,placeVisit,transport, details,contactNo );
 		if(packagee.saveRecord()){
 			nextPage="success_add_package.jsp";
 		}

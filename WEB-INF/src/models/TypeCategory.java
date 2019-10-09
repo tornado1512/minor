@@ -2,16 +2,19 @@ package models;
 
 public class TypeCategory{
 	private Integer typeCategoryId;
-	private String typeName;
+	private String typeCategory;
 	private PackageCategory packageCategoryId;
 
 	public TypeCategory(){
 
 	}
+	public TypeCategory( String typeCategory){
+		this.typeCategory=typeCategory;
+	}
 
-	public TypeCategory(Integer typeCategoryId,String typeName,PackageCategory packageCategoryId){
+	public TypeCategory(Integer typeCategoryId,String typeCategory,PackageCategory packageCategoryId){
 		this.typeCategoryId=typeCategoryId;
-		this.typeName=typeName;
+		this.typeCategory=typeCategory;
 		this.packageCategoryId=packageCategoryId;
 	}
 
@@ -21,11 +24,11 @@ public class TypeCategory{
 	public Integer getTypeCategoryId(){
 		return typeCategoryId;
 	}
-	public void setTypeName(String typeName){
-		this.typeName=typeName;
+	public void setTypeCategory(String typeCategory){
+		this.typeCategory=typeCategory;
 	}
-	public String  getTypeName(){
-		return typeName;
+	public String  getTypeCategory(){
+		return typeCategory;
 	}
 	public void setPackageCategoryId(PackageCategory  packageCategoryId){
 		this.packageCategoryId=packageCategoryId;
