@@ -174,11 +174,30 @@
 </servlet-mapping>
 
 <servlet>
-  <servlet-name>app023</servlet-name>
+  <servlet-name>app020</servlet-name>
+  <servlet-class>controllers.ShowNewAccomodationServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>app020</servlet-name>
+  <url-pattern>/show_new_accomodation.do</url-pattern>
+</servlet-mapping>
+
+<servlet>
+  <servlet-name>app021</servlet-name>
+  <servlet-class>controllers.SaveAccomodationServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>app021</servlet-name>
+  <url-pattern>/save_accomodation.do</url-pattern>
+</servlet-mapping>
+
+
+<servlet>
+  <servlet-name>app022</servlet-name>
   <servlet-class>controllers.PackageServlet</servlet-class>
 </servlet>
 <servlet-mapping>
-  <servlet-name>app023</servlet-name>
+  <servlet-name>app022</servlet-name>
   <url-pattern>/package.do</url-pattern>
 </servlet-mapping>
 

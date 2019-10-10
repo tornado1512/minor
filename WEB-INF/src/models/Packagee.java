@@ -19,8 +19,7 @@ public class Packagee{
 	public Packagee(){
 
 	}
-	public Packagee(Integer packageId,String packageName,TypeCategory typeCategoryId,Integer days,Integer cost,String startEndPoint,Accomodation accomodationId, String food,String placeVisit,String transport,String packageDetails,String contactNo){
-		this.packageId=packageId;
+	public Packagee(String packageName,TypeCategory typeCategoryId,Integer days,Integer cost,String startEndPoint,Accomodation accomodationId, String food,String placeVisit,String transport,String packageDetails,String contactNo){
 		this.packageName=packageName;
 		this.typeCategoryId=typeCategoryId;
 		this.days=days;
@@ -39,11 +38,10 @@ public class Packagee{
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/minor?user=root&password=1234");
-			String query="insert into package (package_name,type_category_id,days,cost,start_end_point,accomodation_id,food,place_visit,transport,package_details,contact_no ) value(?,?,?,?,?,?,?,?,?,?,?,?)";
+			String query="insert into packages (package_name,type_category_id,days,cost,start_end_point,accomodation_id,food,place_visit,transport,package_details,contact_no ) value(?,?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement pst=con.prepareStatement(query);
 			pst.setString(1,packageName); 
 			pst.setInt(2,typeCategoryId.getTypeCategoryId());
-			//pst.setInt(3,typeCategoryId.getPackageCategoryId());
 			pst.setInt(3, days); 
 			pst.setInt(4,cost);
 			pst.setString(5,startEndPoint);
@@ -69,8 +67,23 @@ public class Packagee{
 		this.packageId=packageId;
 	}
 	public Integer getPackageId(){
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/minor?user=root&password=1234");
+			String query="select package_Id from packages where package_name=? ";
+			PreparedStatement pst=con.prepareStatement(query);
+			pst.setString(1,packageName);
+			ResultSet rst=pst.executeQuery();
+			rst.next();
+			packageId=rst.getInt(1);
+			con.close();
+		}
+		catch (ClassNotFoundException|SQLException e){
+			e.printStackTrace();		
+		}
 		return packageId;
 	}
+
 	public void setPackageName(String packageName){
 		this.packageName=packageName;
 	}

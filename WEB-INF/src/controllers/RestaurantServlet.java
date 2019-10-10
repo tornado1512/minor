@@ -20,14 +20,14 @@ import org.apache.commons.fileupload.FileUploadException;
 
 public class RestaurantServlet extends HttpServlet{
 	public void doPost(HttpServletRequest request,HttpServletResponse response) throws IOException,ServletException{
-		String restName = request.getParameter("restName");
-		String restAddress = request.getParameter("restAddress");
-		String restContact = request.getParameter("restContact");
-		String nextPage="";
-		//String restName="";
-		//String restAddress="";
+		//String restName = request.getParameter("restName");
+		//String restAddress = request.getParameter("restAddress");
+		//String restContact = request.getParameter("restContact");
+		String nextPage="rest_register.jsp";
+		String restName="";
+		String restAddress="";
 		String city="";
-		//String restContact="";
+		String restContact="";
 		Integer ownerId=0;
 		String opTime="";
 		String clTime="";
@@ -35,7 +35,7 @@ public class RestaurantServlet extends HttpServlet{
 		String category2=null;
 		String category3=null;
 		String category4=null;
-		RestRegister restRegister;
+		RestRegister restRegister=null;
 		int size=100;
 		int i=-1;
 		String [] pics =new String[100];
@@ -73,7 +73,7 @@ public class RestaurantServlet extends HttpServlet{
 						}
 						else if(fileItem.getFieldName().equals("ownerId")){
 							ownerId=Integer.parseInt(fileItem.getString());
-							System.out.println(ownerId+"`````````");
+							System.out.println(ownerId+"```");
 						}
 						else if(fileItem.getFieldName().equals("optime")){
 							 opTime=fileItem.getString();
@@ -119,11 +119,41 @@ public class RestaurantServlet extends HttpServlet{
 					}
 					
 					
+				}	
+					boolean flag = true;
+					String errorMessage = "";
+
+					if(restName.length()<3){
+						flag = false;
+						errorMessage = errorMessage + "Name must be at least 3 characters length<br />";
 					}
+
+
+					int addressLength = restAddress.length(); 
+					if(addressLength<6){
+						flag = false;
+						errorMessage = errorMessage + "Adress must be at least 6 charcters<br />";
+					}
+
+					int ContactLength = restContact.length(); 
+					if(ContactLength<10 || ContactLength>10 ){
+						flag = false;
+						errorMessage = errorMessage + "contact no. must be at 10 number<br/>";
+					}
+					
+					restRegister=new RestRegister(restName,restAddress,restContact,ownerId,new City(city),opTime,clTime);
+					if(flag){
+						if(restRegister.saveRecord()){
+							nextPage="my_rest_home.jsp";
+						}
+					}else{
+						request.setAttribute("err_msg",errorMessage);
+					}
+					
 					restRegister=new RestRegister(restName,restAddress,restContact,ownerId,new City(city),opTime,clTime);
 					restRegister.saveRecord();
 					size=i+1;
-					for(int j=0;j<=size;j++){
+					for(int j=0;j<size;j++){
 						//System.out.println(j+"pic no:"+pics[j]);
 						RestPic rp=new RestPic(pics[j],restRegister);
 						rp.savePics();
@@ -159,37 +189,9 @@ public class RestaurantServlet extends HttpServlet{
 
 		}
 
-		boolean flag = true;
-		String errorMessage = "";
-
-		if(restName.length()<3){
-			flag = false;
-			errorMessage = errorMessage + "Name must be at least 3 characters length<br />";
-		}
-
-
-		int addressLength = restAddress.length(); 
-		if(addressLength<6){
-			flag = false;
-			errorMessage = errorMessage + "Adress must be at least 6 charcters<br />";
-		}
-
-		int ContactLength = restContact.length(); 
-		if(ContactLength<10 || ContactLength>10 ){
-			flag = false;
-			errorMessage = errorMessage + "contact no. must be at 10 number<br/>";
-		}
-		RestRegister restreg=new RestRegister(restName ,restAddress,restContact);
-		if(flag){
-			if(restreg.saveRecord()){
-				nextPage="home.jsp";
-			}
-		}else{
-			request.setAttribute("err_msg",errorMessage);
-		}
 		
 
-		//System.out.println(flag+" ~~~~~~ "+nextPage);
+		//System.out.println(flag+" ~~ "+nextPage);
 
 		request.getRequestDispatcher("my_rest_home.jsp").forward(request,response);
 	}

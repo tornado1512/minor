@@ -1,5 +1,10 @@
 package models;
 
+import java.sql.*;
+import javax.servlet.http.*;
+import javax.servlet.*;
+import java.io.*;
+
 public class PackagePic{
 	private Integer packagePicId;
 	private String picPath;
@@ -9,11 +14,26 @@ public class PackagePic{
 	public PackagePic(){
 
 	}
-	public PackagePic(Integer packagePicId,String picPath,String picDetails,Packagee packageId){
-		this.packagePicId=packagePicId;
+	public PackagePic(String picPath,Packagee packageId){
 		this.picPath=picPath;
-		this.picDetails=picDetails;
 		this.packageId=packageId;
+	}
+
+	public void savePics(){
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/minor?user=root&password=1234");
+			String query="insert into package_pics(pic_path,package_id) value(?,?)";
+			PreparedStatement pst=con.prepareStatement(query);
+			System.out.println(picPath);
+			pst.setString(1,picPath); 
+			pst.setInt(2,packageId.getPackageId()); 
+			int i=pst.executeUpdate();
+			con.close();
+		}
+		catch (ClassNotFoundException | SQLException e){
+			e.printStackTrace();
+		}
 	}
 
 	public void setPackagePicId(Integer packagePicId){

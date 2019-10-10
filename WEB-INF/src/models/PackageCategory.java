@@ -1,5 +1,7 @@
 package models;
 
+import java.sql.*;
+
 public class PackageCategory{
 	private Integer packageCategoryId;
 	private String packageCategory;
@@ -11,15 +13,27 @@ public class PackageCategory{
 		this.packageCategory=packageCategory;
 	}
 
-	public PackageCategory(Integer packageCategoryId,String packageCategory){
-		this.packageCategoryId=packageCategoryId;
-		this.packageCategory=packageCategory;
-	}
 	public void setPackageCategoryId(Integer packageCategoryId){
 		this.packageCategoryId=packageCategoryId;
 	}
 	public Integer getPackageCategoryId(){
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/minor?user=root&password=1234");
+			String query="select package_category_id from package_categories where package_category=?";
+			PreparedStatement pst=con.prepareStatement(query);
+			pst.setString(1,packageCategory);
+			
+			ResultSet rst=pst.executeQuery();
+			rst.next();
+			packageCategoryId=rst.getInt(1);
+			con.close();
+		}
+		catch (ClassNotFoundException|SQLException e){
+			e.printStackTrace();		
+		}
 		return packageCategoryId;
+		
 	}
 	public void setPackageCategory(String packageCategory){
 		this.packageCategory=packageCategory;

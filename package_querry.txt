@@ -23,34 +23,34 @@ package_category_id int not null,
 constraint fk_type_categories_package_categories foreign key(package_category_id) references package_categories(package_category_id)
 );
 
-insert into type_categories(type_name,package_category_id) values ('religious',1),('Adventurous',1),('Family vacation',1),('Honeymoon',1);
+insert into type_categories(type_category,package_category_id) values ('religious',1),('Adventurous',1),('Family vacation',1),('Honeymoon',1);
 select * from type_categories;
 
-insert into type_categories(type_name,package_category_id) values ('religious',2),('Adventurous',2),('Family vacation',2),('Honeymoon',2);
+insert into type_categories(type_category,package_category_id) values ('religious',2),('Adventurous',2),('Family vacation',2),('Honeymoon',2);
 select * from type_categories;
 
 
-create table accomodation
+create table accomodations
 (
 accomodation_id int not null auto_increment primary key,
 accomodation_name varchar(50) not null,
 address varchar(500) not null,
 accomodation_pic_path varchar(100) not null unique,
 city_id int not null,
-constraint fk_accomodation_cities foreign key(city_id) references cities(city_id)
+constraint fk_accomodations_cities foreign key(city_id) references cities(city_id)
 );
 
-create table package
+create table packages
 (
 package_id int not null auto_increment primary key,
 package_name varchar(100) not null,
 type_category_id int not null,
-constraint fk_package_type_categories foreign key(type_category_id) references type_categories(type_category_id),
+constraint fk_packages_type_categories foreign key(type_category_id) references type_categories(type_category_id),
 days int not null,
 cost int not null,
 start_end_point varchar(50) not null,
 accomodation_id int not null,
-constraint fk_package_accomodation foreign key(accomodation_id) references accomodation(accomodation_id),
+constraint fk_package_accomodations foreign key(accomodation_id) references accomodations(accomodation_id),
 food varchar(50) not null,
 place_visit varchar(500) not null,
 transport varchar(100) not null,
@@ -62,7 +62,6 @@ create table package_pics
 (
 package_pic_id int not null auto_increment primary key,
 pic_path varchar(100) not null unique,
-pic_details varchar(500) not null,
 package_id int not null,
-constraint fk_package_pics_package foreign key(package_id) references package(package_id)
+constraint fk_package_pics_packages foreign key(package_id) references packages(package_id)
 );
