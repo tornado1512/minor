@@ -12,8 +12,13 @@ public class Accomodation{
 	public Accomodation(){
 
 	}
+
 	public Accomodation(String accomodationName){
 		this.accomodationName=accomodationName;
+	}
+
+	public Accomodation(Integer accomodationId){
+		this.accomodationId = accomodationId;
 	}
 
 	public Accomodation(String accomodationName,City cityId,String address,String accomodationPicPath){
@@ -22,6 +27,7 @@ public class Accomodation{
 		this.address=address;
 		this.accomodationPicPath=accomodationPicPath;
 	}
+
 	
 	public boolean saveRecord(){
 		boolean flag=false;

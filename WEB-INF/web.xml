@@ -201,4 +201,22 @@
   <url-pattern>/package.do</url-pattern>
 </servlet-mapping>
 
+<servlet>
+  <servlet-name>app023</servlet-name>
+  <servlet-class>controllers.ShowAllPackagesServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>app023</servlet-name>
+  <url-pattern>/show_all_packages.do</url-pattern>
+</servlet-mapping>
+
+<servlet>
+  <servlet-name>app024</servlet-name>
+  <servlet-class>controllers.NationalServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>app024</servlet-name>
+  <url-pattern>/national.do</url-pattern>
+</servlet-mapping>
+
 </web-app>

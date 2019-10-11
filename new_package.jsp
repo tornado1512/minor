@@ -44,7 +44,8 @@
 			</div>
 			<input type="button" value="add more pictures" id="pic"/>
 			</br></br>
-
+			
+			Display Image<input type="file" name="disp_img">
 			<input type="submit" value="add Pacakge" />
 		</form>
 	

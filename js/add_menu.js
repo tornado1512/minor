@@ -112,6 +112,6 @@ function showRecord(){
 						cell2.appendChild(inp);	
 						//alert(document.getElementById("categ").value);
 				}
-		   }
 		}
+	}
 }

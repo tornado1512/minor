@@ -29,6 +29,7 @@ public class PackageServlet extends HttpServlet{
 		String transport="";
 		String details="";
 		String contactNo="";
+		String dispImg="";
 		String [] pics =new String[100];
 		int i=-1;
 		int size=100;
@@ -94,23 +95,35 @@ public class PackageServlet extends HttpServlet{
 						}
 					}
 					else{
-						File file= new File (realPath,fileItem.getName());
-						i++;
-						try{
-							fileItem.write(file);
-							pics[i]=file.getAbsolutePath();
-							System.out.println(file.getAbsolutePath());
-							//RestPic rp= new RestPic(file.getAbsolutePath(),restRegister);
-							System.out.println("i="+i);
-						}catch (Exception e){
-							e.printStackTrace();
+						if(fileItem.getFieldName().equals("disp_img")){
+							System.out.println(fileItem.getName()+"@@@@@@@@");
+							File file = new File(realPath,fileItem.getName());
+							try{
+								dispImg=file.getAbsolutePath();
+								fileItem.write(file);
+							}catch (Exception e){
+								e.printStackTrace();
+							}
+						}
+						else{
+							File file= new File (realPath,fileItem.getName());
+							i++;
+							try{
+								fileItem.write(file);
+								pics[i]=file.getAbsolutePath();
+								System.out.println(file.getAbsolutePath());
+								//RestPic rp= new RestPic(file.getAbsolutePath(),restRegister);
+								System.out.println("i="+i);
+							}catch (Exception e){
+								e.printStackTrace();
+							}
 						}
 					}
 				}
 				
 				PackageCategory paccat = new PackageCategory(category);
 				TypeCategory typecat = new TypeCategory(typeCategory,paccat);
-				Packagee packagee = new Packagee(pacName,typecat,days,cost,sePoint,new Accomodation(accomodation),food,placeVisit,transport,details,contactNo);
+				Packagee packagee = new Packagee(pacName,typecat,days,cost,sePoint,new Accomodation(accomodation),food,placeVisit,transport,details,contactNo,dispImg);
 				packagee.saveRecord();
 				size=i+1;
 					for(int j=0;j<size;j++){

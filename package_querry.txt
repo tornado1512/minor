@@ -55,7 +55,8 @@ food varchar(50) not null,
 place_visit varchar(500) not null,
 transport varchar(100) not null,
 package_details varchar(500) not null,
-contact_no varchar(20) not null unique
+contact_no varchar(20) not null ,
+disp_img varchar(100) not null
 );
 
 create table package_pics

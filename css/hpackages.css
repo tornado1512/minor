@@ -1,0 +1,16 @@
+#categ{
+	margin-left:20px;
+}
+.but{
+	text-align:center;
+	width:60px;
+	font-size:20px;
+	border:1px solid black;
+	border-radius:2px;
+	padding:40px;
+	margin-left:350px;
+}
+a{
+	text-decoration:none;
+	text-align:center;
+}

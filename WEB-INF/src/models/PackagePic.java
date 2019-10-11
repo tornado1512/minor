@@ -11,9 +11,11 @@ public class PackagePic{
 	private String picDetails;
 	private Packagee packageId;
 
-	public PackagePic(){
+	public PackagePic(Packagee packageId){
+		this.packageId=packageId;
 
 	}
+	public PackagePic(){}
 	public PackagePic(String picPath,Packagee packageId){
 		this.picPath=picPath;
 		this.packageId=packageId;
@@ -46,6 +48,18 @@ public class PackagePic{
 		this.picPath=picPath;
 	}
 	public String getPicPath(){
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/minor?user=root&password=1234");
+			String query="select pic_path from package_pics where package_Id=?";
+			PreparedStatement pst=con.prepareStatement(query);
+			pst.setInt(1,packageId.getPackageId()); 
+			int i=pst.executeUpdate();
+			con.close();
+		}
+		catch (ClassNotFoundException | SQLException e){
+			e.printStackTrace();
+		}
 		return picPath;
 	}
 	public void setPicDetails(String picDetails){

@@ -9,7 +9,7 @@
  <h1>Index Page</h1>
  <h1>Accomodatio</h1>
  <h1>Restaurant</h1>
- <h1>offer</h1>
+ <h1><a href="show_all_packages.do">Holiday </h1>
 
   <h1><a href="show_user_login.do">login/user</a></br></br></h1>
  
