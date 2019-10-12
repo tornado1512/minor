@@ -7,6 +7,7 @@ public class Food{
 	private Integer foodId;
 	private String foodName;
 	private Category categoryId;
+
 	public Food(String foodName){
 		this.foodName=foodName;
 	}
@@ -33,6 +34,19 @@ public class Food{
 			this.foodId=foodId;
 	}
 	public Integer getFoodId(){
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con =DriverManager.getConnection("jdbc:mysql://localhost:3306/minor?user=root&password=1234");
+			String query="select food_id from foods where food_name=?";
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setString(1,foodName);
+			ResultSet rst=pst.executeQuery();
+			rst.next();
+			foodId=rst.getInt(1);
+			
+		}catch(ClassNotFoundException|SQLException e){
+			e.printStackTrace();
+		}
 			return foodId;
 	}
 
@@ -47,6 +61,20 @@ public class Food{
 			this.categoryId=categoryId;
 	}
 	public Category getCategoryId(){
+			try{
+				Class.forName("com.mysql.jdbc.Driver");
+				Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/minor?user=root&password=1234");
+				String query="select category_id from foods where food_name=?";
+				PreparedStatement pst=con.prepareStatement(query);
+				pst.setString(1,foodName);
+				ResultSet rst=pst.executeQuery();
+				rst.next();
+				categoryId=new Category(rst.getInt(1));
+			}
+			catch (ClassNotFoundException|SQLException e){
+				e.printStackTrace();
+			}
 			return categoryId;
 	}
+
 }

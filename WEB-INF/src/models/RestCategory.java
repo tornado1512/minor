@@ -3,7 +3,7 @@ package models;
 import java.sql.*;
 
 public class RestCategory{
-	private Integer restaurantCategoryId;
+	private Integer restCategoryId;
 	private RestRegister restRegisterId;
 	private Category categoryId;
 
@@ -29,11 +29,26 @@ public class RestCategory{
 		return true;
 	}
 
-	public void setRestaurantCategoryId(Integer restaurantCategoryId){
-			this.restaurantCategoryId=restaurantCategoryId;
+	public void setRestCategoryId(Integer restaurantCategoryId){
+			this.restCategoryId=restCategoryId;
 	}
-	public Integer getRestaurantCategoryId(){
-			return restaurantCategoryId;
+	public Integer getRestCategoryId(){
+			try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/minor?user=root&password=1234");
+			String query="select rest_category_id from rest_categories where rest_register_id=? and category_id=?";
+			PreparedStatement pst=con.prepareStatement(query);
+			pst.setInt(1,restRegisterId.getRestRegisterId());			
+			pst.setInt(2,categoryId.getCateg());			
+			
+			ResultSet rst = pst.executeQuery();
+			rst.next();
+			restCategoryId=rst.getInt(1);
+			con.close();
+		}catch(ClassNotFoundException | SQLException e){
+				e.printStackTrace();
+		}
+			return restCategoryId;
 	}
 
 	public void setRestRegistertId(RestRegister restRegisterId){

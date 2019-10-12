@@ -23,12 +23,12 @@
 	<div id="iner1">
 		<table border="1">
 			<tr >
-				<td rowspan="2">img url:<%= pac.getDispImg()%></td>
+				<td rowspan="2"><img src="<%= pac.getDispImg()%>"/></td>
 				<td><%=pac.getPackageName()%></td>
 				<td rowspan="2">Price:<%=pac.getCost()%></td>
 			</tr>
 			<tr >
-				<td><a href="#">Read More</a></td>
+				<td><a href="#?id=<>">Read More</a></td>
 			</tr>
 		</table>
 	<div>

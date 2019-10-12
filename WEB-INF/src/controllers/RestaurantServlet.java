@@ -150,8 +150,8 @@ public class RestaurantServlet extends HttpServlet{
 						request.setAttribute("err_msg",errorMessage);
 					}
 					
-					restRegister=new RestRegister(restName,restAddress,restContact,ownerId,new City(city),opTime,clTime);
-					restRegister.saveRecord();
+					//restRegister=new RestRegister(restName,restAddress,restContact,ownerId,new City(city),opTime,clTime);
+					//restRegister.saveRecord();
 					size=i+1;
 					for(int j=0;j<size;j++){
 						//System.out.println(j+"pic no:"+pics[j]);
