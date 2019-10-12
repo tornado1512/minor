@@ -20,6 +20,7 @@ import org.apache.commons.fileupload.FileUploadException;
 
 public class RestaurantServlet extends HttpServlet{
 	public void doPost(HttpServletRequest request,HttpServletResponse response) throws IOException,ServletException{
+		HttpSession session= request.getSession();
 		//String restName = request.getParameter("restName");
 		//String restAddress = request.getParameter("restAddress");
 		//String restContact = request.getParameter("restContact");
@@ -39,7 +40,7 @@ public class RestaurantServlet extends HttpServlet{
 		int size=100;
 		int i=-1;
 		String [] pics =new String[100];
-		HttpSession session=request.getSession();
+		
 		
 		if(ServletFileUpload.isMultipartContent(request)){
 			DiskFileItemFactory dfif=new DiskFileItemFactory();
@@ -190,7 +191,7 @@ public class RestaurantServlet extends HttpServlet{
 		}
 
 		
-
+		session.setAttribute("ownerId",ownerId);
 		//System.out.println(flag+" ~~ "+nextPage);
 
 		request.getRequestDispatcher("my_rest_home.jsp").forward(request,response);
