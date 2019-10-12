@@ -6,6 +6,9 @@
   <title>Document</title>
  </head>
  <body>
+		<% Integer ownerId=(Integer)session.getAttribute("ownerId");%>
+		<h1>ownerId<%=ownerId%> <h1>
+		<%= session.getId()%>
 		<span id="add">Add your menu</span>
 		<div id="menu_box" style="visibility:hidden;" >
 				<table  id="form1" >

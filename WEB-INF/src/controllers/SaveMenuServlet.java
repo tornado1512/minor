@@ -8,9 +8,12 @@ import models.*;
 public class SaveMenuServlet extends HttpServlet{
 	public void doGet(HttpServletRequest request,HttpServletResponse response) throws IOException,ServletException{
 		HttpSession session=request.getSession();
-		Integer ownerId=(Integer)session.getAttribute("onwerId");
 		
-
+		//Integer ownerId=(Integer)session.getAttribute("ownerId");
+		
+		Integer ownerId=(Integer)session.getAttribute("ownerId");
+		System.out.println(ownerId+"insms22222222222");
+		System.out.println(session.getId());
 		String [] prices = request.getParameterValues("price");
 		String [] items = request.getParameterValues("item");
 		String [] total=request.getParameterValues("total");
