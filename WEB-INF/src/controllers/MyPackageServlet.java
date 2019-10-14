@@ -17,6 +17,7 @@ public class MyPackageServlet extends HttpServlet{
 		request.setAttribute("packagee",packagee);
 		request.setAttribute("pics",pics);
 		request.setAttribute("accomodation",accomodation);
+
 		request.getRequestDispatcher("my_package1.jsp").forward(request,response);
 	}
 }

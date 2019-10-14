@@ -1,6 +1,8 @@
 package models;
 import java.sql.*;
 
+import java.util.ArrayList;
+
 import org.jasypt.util.password.StrongPasswordEncryptor;
 public class RestRegister{
 	private Integer restRegisterId;
@@ -15,6 +17,16 @@ public class RestRegister{
 
     }
     public RestRegister(String restName ,String restAddress, String restContact,Integer ownerId,City city,String opTime,String clTime ){
+		this.restName=restName;
+		this.restAddress=restAddress;
+		this.restContact=restContact;
+		this.ownerId=ownerId;
+		this.city=city;
+		this.opTime=opTime;
+		this.clTime=clTime;
+    }
+	public RestRegister(Integer restRegisterId , String restName ,String restAddress, String restContact,Integer ownerId,City city,String opTime,String clTime ){
+		this.restRegisterId = restRegisterId;
 		this.restName=restName;
 		this.restAddress=restAddress;
 		this.restContact=restContact;
@@ -80,16 +92,17 @@ public class RestRegister{
 		return restRegisterId;
 	}
 
-	public static ArrayList<Rest> collectRest(){
-		ArrayList<Rest> rests=new ArrayList<Rest>();
+	public static ArrayList<RestRegister> collectRest(City city){
+		ArrayList<RestRegister> rests=new ArrayList<RestRegister>();
 		try{
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc1?user=root&password=1234");
-		String query="select from rest_register where city_id=?";
+		String query="select * from rest_register where city_id=?";
 		PreparedStatement pst=con.prepareStatement(query);
+		pst.setInt(1,city.getCityId());
 		ResultSet rs=pst.executeQuery();
 		while(rs.next()){
-			RestRegister rest=new RestRegister(rs.getInt("rest_register_id"),rs.getString("rest_name"),rs.getString("rest_address"),rs.getString("rest_contact"),rs.getInt("owner_id"),rs.getInt("city_id"),rs.getString("opTime"),rs.getString("clTime"));
+			RestRegister rest=new RestRegister(rs.getInt("rest_register_id"),rs.getString("rest_name"),rs.getString("rest_address"),rs.getString("rest_contact"),rs.getInt("owner_id"),new City(rs.getInt("city_id")),rs.getString("opTime"),rs.getString("clTime"));
 			rests.add(rest);
 			}
 		}
@@ -98,9 +111,6 @@ public class RestRegister{
 		}
 		return rests;
     }
-    public Integer getRestRegisterId(){
-		return restRegisterId;
-	}
 
     public void setRestName(String restName){
 		this.restName=restName;
