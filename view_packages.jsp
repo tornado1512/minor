@@ -24,6 +24,7 @@
 		<table border="1">
 			<tr >
 				<td rowspan="2">img url:<img src="<%= pac.getDispImg()%>"/></td>
+				<td rowspan="2"><img src="<%= pac.getDispImg()%>"/></td>
 				<td><%=pac.getPackageName()%></td>
 				<td rowspan="2">Price:<%=pac.getCost()%></td>
 			</tr>

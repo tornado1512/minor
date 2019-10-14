@@ -9,11 +9,15 @@ public class Category{
 	public Category(String categoryName){
 		this.categoryName=categoryName;
 	}
+
+	public Category(Integer categoryId){
+		this.categoryId=categoryId;
+	}
 	public static ArrayList<Category> collectCategory(){
 		ArrayList<Category> categories = new ArrayList<Category>();
 				try{
 					Class.forName("com.mysql.jdbc.Driver");
-					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/minor","root","1234");
+					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/minor?user=root&password=1234");
 					String query= "select  category_name from categories";
 					PreparedStatement pst = con.prepareStatement(query);
 					ResultSet rs = pst.executeQuery();
@@ -31,6 +35,9 @@ public class Category{
 			this.categoryId=categoryId;
 	}
 	
+	public Integer getCateg(){
+		return categoryId;//second method for gettting id ,It contain only Id which is get byfood table
+	}
 	public Integer getCategoryId(){
 		try{
 			//System.out.println("inside categ"+categoryName);

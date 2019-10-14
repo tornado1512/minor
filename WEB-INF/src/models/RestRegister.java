@@ -23,11 +23,16 @@ public class RestRegister{
 		this.opTime=opTime;
 		this.clTime=clTime;
     }
-	 public RestRegister(String restName ,String restAddress, String restContact){
+	public RestRegister(String restName ,String restAddress, String restContact){
 		this.restName=restName;
 		this.restAddress=restAddress;
 		this.restContact=restContact;
     }
+	
+	public RestRegister(Integer ownerId){
+		this.ownerId=ownerId;
+	}
+
     public boolean saveRecord(){
 		boolean flag=false;
 		try{

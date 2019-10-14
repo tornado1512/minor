@@ -20,6 +20,7 @@ import org.apache.commons.fileupload.FileUploadException;
 
 public class RestaurantServlet extends HttpServlet{
 	public void doPost(HttpServletRequest request,HttpServletResponse response) throws IOException,ServletException{
+		HttpSession session= request.getSession();
 		//String restName = request.getParameter("restName");
 		//String restAddress = request.getParameter("restAddress");
 		//String restContact = request.getParameter("restContact");
@@ -39,7 +40,7 @@ public class RestaurantServlet extends HttpServlet{
 		int size=100;
 		int i=-1;
 		String [] pics =new String[100];
-		HttpSession session=request.getSession();
+		
 		
 		if(ServletFileUpload.isMultipartContent(request)){
 			DiskFileItemFactory dfif=new DiskFileItemFactory();
@@ -150,8 +151,8 @@ public class RestaurantServlet extends HttpServlet{
 						request.setAttribute("err_msg",errorMessage);
 					}
 					
-					restRegister=new RestRegister(restName,restAddress,restContact,ownerId,new City(city),opTime,clTime);
-					restRegister.saveRecord();
+					//restRegister=new RestRegister(restName,restAddress,restContact,ownerId,new City(city),opTime,clTime);
+					//restRegister.saveRecord();
 					size=i+1;
 					for(int j=0;j<size;j++){
 						//System.out.println(j+"pic no:"+pics[j]);
@@ -190,7 +191,7 @@ public class RestaurantServlet extends HttpServlet{
 		}
 
 		
-
+		session.setAttribute("ownerId",ownerId);
 		//System.out.println(flag+" ~~ "+nextPage);
 
 		request.getRequestDispatcher("my_rest_home.jsp").forward(request,response);

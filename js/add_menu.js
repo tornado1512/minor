@@ -62,15 +62,23 @@ function showRecord2(){
 				var inp1=document.createElement("input");
 				inp1.setAttribute("type","checkbox");
 				inp1.setAttribute("value",obj[x]);
-				inp1.setAttribute("name","item"+j);
+				inp1.setAttribute("name","item");
 				cell2.appendChild(inp1);
 				n++;
 				
 				var cell3=row.insertCell(n);
 				var inp=document.createElement("input");
 				inp.setAttribute("type","number");
-				inp.setAttribute("name","price"+j);
+				inp.setAttribute("name","price");
 				cell3.appendChild(inp);
+				n++;
+
+				var cell4=row.insertCell(n);
+				var inp4=document.createElement("input");
+				inp4.setAttribute("type","hidden");
+				inp4.setAttribute("name","total");
+				inp4.setAttribute("value",obj[x]);
+				cell4.appendChild(inp4);
 				j++;
 			}
 		}
