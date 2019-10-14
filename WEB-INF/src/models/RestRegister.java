@@ -80,6 +80,28 @@ public class RestRegister{
 		return restRegisterId;
 	}
 
+	public static ArrayList<Rest> collectRest(){
+		ArrayList<Rest> rests=new ArrayList<Rest>();
+		try{
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc1?user=root&password=1234");
+		String query="select from rest_register where city_id=?";
+		PreparedStatement pst=con.prepareStatement(query);
+		ResultSet rs=pst.executeQuery();
+		while(rs.next()){
+			RestRegister rest=new RestRegister(rs.getInt("rest_register_id"),rs.getString("rest_name"),rs.getString("rest_address"),rs.getString("rest_contact"),rs.getInt("owner_id"),rs.getInt("city_id"),rs.getString("opTime"),rs.getString("clTime"));
+			rests.add(rest);
+			}
+		}
+		catch (ClassNotFoundException|SQLException e){
+			e.printStackTrace();
+		}
+		return rests;
+    }
+    public Integer getRestRegisterId(){
+		return restRegisterId;
+	}
+
     public void setRestName(String restName){
 		this.restName=restName;
 	} 

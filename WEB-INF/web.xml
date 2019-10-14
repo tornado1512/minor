@@ -264,4 +264,13 @@
   <url-pattern>/my_package.do</url-pattern>
 </servlet-mapping>
 
+<servlet>
+		<servlet-name>app030</servlet-name>
+		<servlet-class>controllers.ShowRestRegister</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>app030</servlet-name>
+		<url-pattern>/show_rest.do</url-pattern>
+	</servlet-mapping>
+
 </web-app>
