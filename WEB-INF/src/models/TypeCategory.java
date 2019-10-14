@@ -13,6 +13,9 @@ public class TypeCategory{
 	public TypeCategory( String typeCategory){
 		this.typeCategory=typeCategory;
 	}
+	public TypeCategory(Integer typeCategoryId){
+		this.typeCategoryId=typeCategoryId;
+	}
 
 	public TypeCategory(String typeCategory,PackageCategory packageCategoryId){
 		this.typeCategory=typeCategory;

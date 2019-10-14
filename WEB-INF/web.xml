@@ -219,4 +219,49 @@
   <url-pattern>/national.do</url-pattern>
 </servlet-mapping>
 
+<servlet>
+  <servlet-name>app025</servlet-name>
+  <servlet-class>controllers.ReligiousPackageServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>app025</servlet-name>
+  <url-pattern>/religious_package.do</url-pattern>
+</servlet-mapping>
+
+<servlet>
+  <servlet-name>app026</servlet-name>
+  <servlet-class>controllers.AdventurePackageServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>app026</servlet-name>
+  <url-pattern>/adventure_package.do</url-pattern>
+</servlet-mapping>
+
+<servlet>
+  <servlet-name>app027</servlet-name>
+  <servlet-class>controllers.FamilyVacationPackageServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>app027</servlet-name>
+  <url-pattern>/family_vacation.do</url-pattern>
+</servlet-mapping>
+
+<servlet>
+  <servlet-name>app028</servlet-name>
+  <servlet-class>controllers.HoneymoonPackageServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>app028</servlet-name>
+  <url-pattern>/honeymoon.do</url-pattern>
+</servlet-mapping>
+
+<servlet>
+  <servlet-name>app029</servlet-name>
+  <servlet-class>controllers.MyPackageServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>app029</servlet-name>
+  <url-pattern>/my_package.do</url-pattern>
+</servlet-mapping>
+
 </web-app>

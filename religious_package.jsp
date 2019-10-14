@@ -4,20 +4,20 @@
 <!doctype html>
 <html lang="en">
  <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="css/view_pack.css"/>
   <title>Document</title>
+  <link rel="stylesheet" href="css/view_pack.css"/>
  </head>
  <body>
-  <h1 align="center">Packages</h1></br>
+		<h1 align="center">Packages</h1></br>
 	<div id="box1">	
-	<span id='all' class="but">All packages</span>
+	<span id='all' class="but"><a href="national.do">All packages</a></span>
 	<span class="but" id='but1' ><a href="religious_package.do">Religous</a></span>
 	<span id='but2' class="but"><a href="adventure_package.do">Adventorous</a></span>
 	<span id='but3' class="but"><a href="family_vacation.do">Family Vacations</a></span>
 	<span id='but4' class="but"><a href="honeymoon.do">HoneyMoon</a><span>
 	</div>
-	<%ArrayList<Packagee> packages= (ArrayList<Packagee>)session.getAttribute("packages");%>
+		<%ArrayList<Packagee> packages= (ArrayList<Packagee>)session.getAttribute("packages");%>
+		<h1 align="center">~~~~Religious Package~~~~~~~</h1>
   <div id="main" border="1">
   <%for(Packagee pac:packages){%>
 	<div id="iner1">
@@ -28,12 +28,11 @@
 				<td rowspan="2">Price:<%=pac.getCost()%></td>
 			</tr>
 			<tr >
-				<td><a href="">Read More</a></td>
+				<td><a href="my_package.do?packageId=<%= pac.getPackageId() %>">Read More</a></td>
 			</tr>
 		</table>
 	<div>
 	<%}%>
-  </div><u></u>
+  </div>
  </body>
 </html>
-

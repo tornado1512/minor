@@ -62,6 +62,25 @@ public class Packagee{
 			PreparedStatement pst=con.prepareStatement(query);
 			ResultSet rst=pst.executeQuery();
 			while(rst.next()){
+				Packagee packagee=new Packagee(rst.getInt(1),rst.getString(2),new TypeCategory(rst.getInt(3)),rst.getInt(4),rst.getInt(5),rst.getString(6),new Accomodation(rst.getInt(7)),rst.getString(8),rst.getString(9),rst.getString(10),rst.getString(11),rst.getString(12),rst.getString(13));
+				packages.add(packagee);
+			}
+			
+		}
+		catch (ClassNotFoundException|SQLException e){
+			e.printStackTrace();
+		}
+		return packages;
+	}
+	public static ArrayList<Packagee>collectReligiousPack(){
+		ArrayList<Packagee> packages=new ArrayList<Packagee>();
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/minor?user=root&password=1234");
+			String query="select * from packages where type_category_id=1 ";
+			PreparedStatement pst=con.prepareStatement(query);
+			ResultSet rst=pst.executeQuery();
+			while(rst.next()){
 				Packagee packagee=new Packagee(rst.getInt(1),rst.getString(2),new TypeCategory(rst.getString(3)),rst.getInt(4),rst.getInt(5),rst.getString(6),new Accomodation(rst.getInt(7)),rst.getString(8),rst.getString(9),rst.getString(10),rst.getString(11),rst.getString(12),rst.getString(13));
 				packages.add(packagee);
 			}
@@ -72,7 +91,80 @@ public class Packagee{
 		}
 		return packages;
 	}
-
+	public static ArrayList<Packagee>collectAdventurePack(){
+		ArrayList<Packagee> packages=new ArrayList<Packagee>();
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/minor?user=root&password=1234");
+			String query="select * from packages where type_category_id=2 ";
+			PreparedStatement pst=con.prepareStatement(query);
+			ResultSet rst=pst.executeQuery();
+			while(rst.next()){
+				Packagee packagee=new Packagee(rst.getInt(1),rst.getString(2),new TypeCategory(rst.getString(3)),rst.getInt(4),rst.getInt(5),rst.getString(6),new Accomodation(rst.getInt(7)),rst.getString(8),rst.getString(9),rst.getString(10),rst.getString(11),rst.getString(12),rst.getString(13));
+				packages.add(packagee);
+			}
+			
+		}
+		catch (ClassNotFoundException|SQLException e){
+			e.printStackTrace();
+		}
+		return packages;
+	}
+	public static ArrayList<Packagee> collectFamilyVacationPack(){
+		ArrayList<Packagee> packages = new ArrayList<Packagee>();
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/minor?user=root&password=1234");
+			String query="select * from packages where type_category_id=3 ";
+			PreparedStatement pst = con.prepareStatement(query);
+			ResultSet rst = pst.executeQuery();
+			while(rst.next()){
+				Packagee packagee=new Packagee(rst.getInt(1),rst.getString(2),new TypeCategory(rst.getString(3)),rst.getInt(4),rst.getInt(5),rst.getString(6),new Accomodation(rst.getInt(7)),rst.getString(8),rst.getString(9),rst.getString(10),rst.getString(11),rst.getString(12),rst.getString(13));
+				packages.add(packagee);
+			}
+		}catch(ClassNotFoundException | SQLException e){
+				e.printStackTrace();
+		}
+		return packages;
+	}
+	public static ArrayList<Packagee>collectHoneymoonPack(){
+		ArrayList<Packagee> packages=new ArrayList<Packagee>();
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/minor?user=root&password=1234");
+			String query="select * from packages where type_category_id=4 ";
+			PreparedStatement pst=con.prepareStatement(query);
+			ResultSet rst=pst.executeQuery();
+			while(rst.next()){
+				Packagee packagee=new Packagee(rst.getInt(1),rst.getString(2),new TypeCategory(rst.getString(3)),rst.getInt(4),rst.getInt(5),rst.getString(6),new Accomodation(rst.getInt(7)),rst.getString(8),rst.getString(9),rst.getString(10),rst.getString(11),rst.getString(12),rst.getString(13));
+				packages.add(packagee);
+			}
+			
+		}
+		catch (ClassNotFoundException|SQLException e){
+			e.printStackTrace();
+		}
+		return packages;
+	}
+	public static Packagee collectPackage(Integer packageId){
+		Packagee packagee=null;
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/minor?user=root&password=1234");
+			String query="select * from packages  where package_id=? ";
+			PreparedStatement pst=con.prepareStatement(query);
+			pst.setInt(1,packageId);
+			ResultSet rst=pst.executeQuery();
+			rst.next();
+			packagee = new Packagee(rst.getInt(1),rst.getString(2),new TypeCategory(rst.getInt(3)),rst.getInt(4),rst.getInt(5),rst.getString(6),new Accomodation(rst.getInt(7)),rst.getString(8),rst.getString(9),rst.getString(10),rst.getString(11),rst.getString(12),rst.getString(13));
+			//Packagee packagee=new Packagee(rst.getInt(1),rst.getString(2),new TypeCategory(rst.getInt(3)),rst.getInt(4),rst.getInt(5),rst.getString(6),new Accomodation(rst.getInt(7)),rst.getString(8),rst.getString(9),rst.getString(10),rst.getString(11),rst.getString(12),rst.getString(13));
+			con.close();
+		}
+		catch (ClassNotFoundException|SQLException e){
+			e.printStackTrace();		
+		}
+		return packagee;
+	}
 	public boolean saveRecord(){
 		boolean flag=false;
 		try{

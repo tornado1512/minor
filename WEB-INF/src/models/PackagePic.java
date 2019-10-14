@@ -4,6 +4,7 @@ import java.sql.*;
 import javax.servlet.http.*;
 import javax.servlet.*;
 import java.io.*;
+import java.util.ArrayList;
 
 public class PackagePic{
 	private Integer packagePicId;
@@ -19,6 +20,27 @@ public class PackagePic{
 	public PackagePic(String picPath,Packagee packageId){
 		this.picPath=picPath;
 		this.packageId=packageId;
+	}
+
+	public static ArrayList collectPics(Integer packageId){
+		ArrayList <String> pics= new ArrayList<String>(); 
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/minor?user=root&password=1234");
+			String query="select pic_path from package_pics where package_id=?";
+			PreparedStatement pst=con.prepareStatement(query);
+			
+			pst.setInt(1,packageId);  
+			ResultSet rst =pst.executeQuery();
+			while(rst.next()){
+				pics.add(rst.getString(1));
+			}
+			con.close();
+		}
+		catch (ClassNotFoundException | SQLException e){
+			e.printStackTrace();
+		}
+		return pics;
 	}
 
 	public void savePics(){

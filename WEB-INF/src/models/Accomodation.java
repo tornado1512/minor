@@ -12,13 +12,38 @@ public class Accomodation{
 	public Accomodation(){
 
 	}
+	public Accomodation(Integer accomodationId){
+		this.accomodationId = accomodationId;
+	}
+	public Accomodation(Integer accomodationId,String accomodationName,String address,String accomodationPicPath,City city){
+		this.accomodationId=accomodationId;
+		this.accomodationName=accomodationName;
+		this.address=address;
+		accomodationPicPath=accomodationPicPath;
+		this.cityId=cityId;
+
+	}
+	public Accomodation collectAccomodation(){
+		Accomodation accomodation = null;
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/minor?user=root&password=1234");
+			String query="select * from accomodations where accomodation_id=?";
+			PreparedStatement pst=con.prepareStatement(query);
+			pst.setInt(1,accomodationId);
+			ResultSet rst=pst.executeQuery();
+			rst.next();
+			accomodation= new Accomodation(rst.getInt(1),rst.getString(2),rst.getString(3),rst.getString(4),new City(rst.getInt(5)));
+			System.out.println("hello accomodation");
+		}
+		catch (ClassNotFoundException|SQLException e){
+			e.printStackTrace();
+		}
+		return accomodation;
+	}
 
 	public Accomodation(String accomodationName){
 		this.accomodationName=accomodationName;
-	}
-
-	public Accomodation(Integer accomodationId){
-		this.accomodationId = accomodationId;
 	}
 
 	public Accomodation(String accomodationName,City cityId,String address,String accomodationPicPath){
@@ -86,7 +111,7 @@ public class Accomodation{
 	public void setAccomodationPicPath(String accomodationPicPath){
 		this.accomodationPicPath=accomodationPicPath;
 	}
-	public String getAccompodationPicPath(){
+	public String getAccomodationPicPath(){
 		return accomodationPicPath;
 	}
 }

@@ -8,10 +8,13 @@ public class City{
 	public City(String cityName){
 		this.cityName=cityName;
 	}
-	
+	public City(Integer cityId){
+		this.cityId=cityId;
+	}
 	public void setCityId(Integer cityId){
 		this.cityId=cityId;
 	}
+	
 	public Integer getCityId(){
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
