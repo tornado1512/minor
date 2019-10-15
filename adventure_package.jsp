@@ -16,7 +16,7 @@
 	<span id='but3' class="but"><a href="family_vacation.do">Family Vacations</a></span>
 	<span id='but4' class="but"><a href="honeymoon.do">HoneyMoon</a><span>
 	</div>
-		<%ArrayList<Packagee> packages= (ArrayList<Packagee>)session.getAttribute("packages");%>
+		<%ArrayList<Packagee> packages= (ArrayList<Packagee>)request.getAttribute("packages");%>
 		<h1 align="center">~~~~Adventure Package~~~~~~~</h1>
   <div id="main" border="1">
   <%for(Packagee pac:packages){%>
