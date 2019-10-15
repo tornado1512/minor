@@ -16,7 +16,7 @@ public class HoneymoonPackageServlet extends HttpServlet{
 		for(Packagee pac:packages){
 			System.out.println(pac.getPackageName()+"pppp");
 			}
-		session.setAttribute("packages",packages);
+		request.setAttribute("packages",packages);
 		request.getRequestDispatcher(nextPage).forward(request,response);
 	}
 }
