@@ -313,12 +313,30 @@
 </servlet-mapping>
 
 <servlet>
-	<servlet-name>app034</servlet-name>
+	<servlet-name>app035</servlet-name>
 	<servlet-class>controllers.RestRecordShowServlet</servlet-class>
 </servlet>
 <servlet-mapping>
-	<servlet-name>app034</servlet-name>
+	<servlet-name>app035</servlet-name>
 	<url-pattern>/rest_record_show.do</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>app036</servlet-name>
+	<servlet-class>controllers.MyRestServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>app036</servlet-name>
+	<url-pattern>/my_rest.do</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>app037</servlet-name>
+	<servlet-class>controllers.MyOrderServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>app037</servlet-name>
+	<url-pattern>/my_order.do</url-pattern>
 </servlet-mapping>
 
 

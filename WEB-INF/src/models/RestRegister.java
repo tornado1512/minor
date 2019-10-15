@@ -115,13 +115,32 @@ public class RestRegister{
 		}
 		return rests;
     }
+	public static RestRegister collectRest(Integer restRegisterId){
+		RestRegister rest=null;
+		try{
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/minor?user=root&password=1234");
+		String query="select * from rest_registers where rest_register_id=?";
+		PreparedStatement pst=con.prepareStatement(query);
+		pst.setInt(1,restRegisterId);
+		ResultSet rs=pst.executeQuery();
+		while(rs.next()){
+			rest=new RestRegister(rs.getInt("rest_register_id"),rs.getString("rest_name"),rs.getString("rest_address"),rs.getString("rest_contact"),rs.getInt("owner_id"),new City(rs.getInt("city_id")),rs.getString("opTime"),rs.getString("clTime"),rs.getString("disp_img"));
+			
+			}
+		}
+		catch (ClassNotFoundException|SQLException e){
+			e.printStackTrace();
+		}
+		return rest;
+    }
 
 	public static ArrayList<RestRegister>collectChineseRest(){
 		ArrayList<RestRegister> rests=new ArrayList<RestRegister>();
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/minor?user=root&password=1234");
-			String query="select * from rest_registers where rest_category_id=1 ";
+			String query="select * from rest_registers where category_id=1 ";
 			PreparedStatement pst=con.prepareStatement(query);
 			ResultSet rs=pst.executeQuery();
 			while(rs.next()){

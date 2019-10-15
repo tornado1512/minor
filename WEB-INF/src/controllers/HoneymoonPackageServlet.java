@@ -14,9 +14,8 @@ public class HoneymoonPackageServlet extends HttpServlet{
 		ArrayList<Packagee> pacs=Packagee.collectHoneymoonPack();
 		for(Packagee pac:pacs){
 			System.out.println(pac.getPackageName()+"package@@");
-			
-		session.setAttribute("packages",pacs)
-		request.setAttribute("packages",packages);
+		}	
+		session.setAttribute("packages",pacs);
 		request.getRequestDispatcher(nextPage).forward(request,response);
 	}
 }

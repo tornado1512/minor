@@ -33,7 +33,7 @@ public class RestFood{
 		}
 		return flag;
 	}
-
+	public static ArrayList<RestFood>
 	public void setRestFoodId( Integer restFoodId){
 			this.restFoodId=restFoodId;
 	}
