@@ -6,16 +6,16 @@ import java.io.*;
 import java.util.ArrayList;
 import models.*;
 
-public class HoneymoonPackageServlet extends HttpServlet{
+public class ItalianRestServlet extends HttpServlet{
 	public void doGet(HttpServletRequest request,HttpServletResponse response)throws IOException,ServletException{
 		HttpSession session=request.getSession();
-		String nextPage="honeymoon_package.jsp";
+		String nextPage="italian_rest.jsp";
 
-		ArrayList<Packagee> pacs=Packagee.collectHoneymoonPack();
-		for(Packagee pac:pacs){
-			System.out.println(pac.getPackageName()+"package@@");
+		ArrayList<RestRegister> rests=RestRegister.collectItalianRest();
+		for(RestRegister rest:rests){
+			System.out.println(rest.getRestName()+"rest");
 			}
-		session.setAttribute("packages",pacs);
+		session.setAttribute("rests",rests);
 		request.getRequestDispatcher(nextPage).forward(request,response);
 	}
 }

@@ -19,7 +19,7 @@
 	<span id='but3' class="but"><a href="south_indian_rest.do">South Indian</a></span>
 	<span id='but4' class="but"><a href="north_indian_rest.do">North Indian</a><span>
 	</div></br></br>
- 
+	<h1 align="center">~~~~NorthIndian Restaurant~~~</h1>
 	<% ArrayList<RestRegister> rests=(ArrayList)request.getAttribute("rests");%>
 	<table border="2" align="center">
 	<tr>

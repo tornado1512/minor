@@ -265,12 +265,61 @@
 </servlet-mapping>
 
 <servlet>
-		<servlet-name>app030</servlet-name>
-		<servlet-class>controllers.ShowRestRegisterServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>app030</servlet-name>
-		<url-pattern>/show_rest.do</url-pattern>
-	</servlet-mapping>
+	<servlet-name>app030</servlet-name>
+	<servlet-class>controllers.ShowRestRegisterServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>app030</servlet-name>
+	<url-pattern>/show_rest.do</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>app031</servlet-name>
+	<servlet-class>controllers.ChineseRestServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>app031</servlet-name>
+	<url-pattern>/chinese_rest.do</url-pattern>
+</servlet-mapping>
+
+
+<servlet>
+	<servlet-name>app032</servlet-name>
+	<servlet-class>controllers.ItalianRestServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>app032</servlet-name>
+	<url-pattern>/italian_rest.do</url-pattern>
+</servlet-mapping>
+
+
+<servlet>
+	<servlet-name>app033</servlet-name>
+	<servlet-class>controllers.SouthIndainRestServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>app033</servlet-name>
+	<url-pattern>/south_indian_rest.do</url-pattern>
+</servlet-mapping>
+
+
+<servlet>
+	<servlet-name>app034</servlet-name>
+	<servlet-class>controllers.NorthIndianRestServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>app034</servlet-name>
+	<url-pattern>/north_indian_rest.do</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>app034</servlet-name>
+	<servlet-class>controllers.RestRecordShowServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>app034</servlet-name>
+	<url-pattern>/rest_record_show.do</url-pattern>
+</servlet-mapping>
+
 
 </web-app>
