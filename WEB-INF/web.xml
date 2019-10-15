@@ -266,7 +266,7 @@
 
 <servlet>
 		<servlet-name>app030</servlet-name>
-		<servlet-class>controllers.ShowRestRegister</servlet-class>
+		<servlet-class>controllers.ShowRestRegisterServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>app030</servlet-name>

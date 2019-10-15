@@ -36,6 +36,7 @@ public class RestaurantServlet extends HttpServlet{
 		String category2=null;
 		String category3=null;
 		String category4=null;
+		String dispImg="";
 		RestRegister restRegister=null;
 		int size=100;
 		int i=-1;
@@ -105,20 +106,31 @@ public class RestaurantServlet extends HttpServlet{
 						//restRegister.saveRecord();
 					}
 					else{
-						File file= new File (realPath,fileItem.getName());
-						i++;
-						try{
-							fileItem.write(file);
-							pics[i]=file.getAbsolutePath();
-							System.out.println(file.getAbsolutePath());
-							//RestPic rp= new RestPic(file.getAbsolutePath(),restRegister);
-							System.out.println("i="+i);
-						}catch (Exception e){
-							e.printStackTrace();
+						if(fileItem.getFieldName().equals("disp_img")){
+							System.out.println(fileItem.getName()+"@@@@@@@@");
+							File file = new File(realPath,fileItem.getName());
+							try{
+								dispImg=file.getAbsolutePath();
+								fileItem.write(file);
+							}catch (Exception e){
+								e.printStackTrace();
+							}
 						}
-					
+						else{
+							File file= new File (realPath,fileItem.getName());
+							i++;
+							try{
+								fileItem.write(file);
+								pics[i]=file.getAbsolutePath();
+								System.out.println(file.getAbsolutePath());
+								//RestPic rp= new RestPic(file.getAbsolutePath(),restRegister);
+								System.out.println("i="+i);
+							}catch (Exception e){
+								e.printStackTrace();
+							}
+						}
+
 					}
-					
 					
 				}	
 					boolean flag = true;
@@ -130,7 +142,7 @@ public class RestaurantServlet extends HttpServlet{
 					}
 
 
-					int addressLength = restAddress.length(); 
+					int addressLength = restAddress.length(); //error message should be used.
 					if(addressLength<6){
 						flag = false;
 						errorMessage = errorMessage + "Adress must be at least 6 charcters<br />";
@@ -142,7 +154,8 @@ public class RestaurantServlet extends HttpServlet{
 						errorMessage = errorMessage + "contact no. must be at 10 number<br/>";
 					}
 					
-					restRegister=new RestRegister(restName,restAddress,restContact,ownerId,new City(city),opTime,clTime);
+					restRegister=new RestRegister(restName,restAddress,restContact,ownerId,new City(city),opTime,clTime,dispImg);
+					restRegister.saveRecord();
 					if(flag){
 						if(restRegister.saveRecord()){
 							nextPage="my_rest_home.jsp";
@@ -151,8 +164,6 @@ public class RestaurantServlet extends HttpServlet{
 						request.setAttribute("err_msg",errorMessage);
 					}
 					
-					//restRegister=new RestRegister(restName,restAddress,restContact,ownerId,new City(city),opTime,clTime);
-					//restRegister.saveRecord();
 					size=i+1;
 					for(int j=0;j<size;j++){
 						//System.out.println(j+"pic no:"+pics[j]);
