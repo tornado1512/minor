@@ -20,8 +20,8 @@
 	<span id='but4' class="but"><a href="honeymoon.do">North Indian</a><span>
 	</div></br></br>
  
-  <% ArrayList<RestRegister> rests=(ArrayList)request.getAttribute("rests");%>
-  <table border="2" align="center">
+	<% ArrayList<RestRegister> rests=(ArrayList)request.getAttribute("rests");%>
+	<table border="2" align="center">
 	<tr>
 		<td>restuarnt name</td>
 		<td>restuarnt address</td>
